@@ -275,7 +275,7 @@ int main(int numArgs, char** args)
       int nb_coll = x_coll_left.size() + x_coll_right.size();
 	
 
-      if(nb_coll>0){
+      if(nb_coll==1){
         moveEyes = true;
         for(int ii=0; ii<x_coll_left.size(); ii++){
           mean_x =+ x_coll_left[ii];
