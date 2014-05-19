@@ -1,0 +1,181 @@
+#include "tracker_pool.h"
+
+
+TrackerPool::TrackerPool(double sig_x, double sig_y, double sig_xy, double alpha_pos, double alpha_shape, double k, 
+			 double max_dist, bool fixed_shape, double tau_act, double up_thresh, double down_thresh, 
+			 double alpha_rep, int d_rep, int max_nb_trackers, int nb_ev_regulate){
+
+  // We copy the initial parameters, that we will use for initializing the blob trackers
+  sig_x2_ = sig_x*sig_x;
+  sig_y2_ = sig_y*sig_y;
+  sig_xy_ = sig_xy;
+
+  alpha_pos_ = alpha_pos;
+  alpha_shape_ = alpha_shape;
+  k_ = k;
+
+  max_dist_ = max_dist;
+  fixed_shape_ = fixed_shape;
+
+  tau_act_ = tau_act;
+  up_thresh_ = up_thresh;
+  down_thresh_ = down_thresh;
+
+  alpha_rep_ = alpha_rep;
+  d_rep_ = d_rep;
+
+  max_nb_tr_ = max_nb_trackers;
+
+  nb_ev_regulate_ = nb_ev_regulate;
+  count_ = 0;
+}
+
+
+
+TrackerPool::~TrackerPool(){
+}
+
+
+
+void TrackerPool::update(int ev_x, int ev_y, int ev_t){
+  // If this is the first event that we receive, we set its timestamp as the first one for the regulation process
+//printf("[tracker pool] : Updating blobs\n");
+  if(count_ == 0){
+    ts_last_reg_ = ev_t;
+  }
+
+  double max_p = 0;
+  double max_ind = -1;
+
+  // We look for the tracker with the biggest p
+  for(int ii=0; ii<trackers_.size(); ii++){
+    if(trackers_[ii].dist2event(ev_x, ev_y) < max_dist_){
+      double p = trackers_[ii].compute_p(ev_x, ev_y);
+      if(p>max_p || max_ind ==-1){
+	max_p = p; 
+	max_ind = ii;
+      }
+    }
+  }
+
+  // If there was not any tracker close enough, we create a new one
+  if(max_ind == -1){
+    if(trackers_.size()<max_nb_tr_){
+      trackers_.push_back(BlobTracker(ev_x, ev_y, sig_x2_, sig_y2_, sig_xy_, alpha_pos_, alpha_shape_, k_, up_thresh_, down_thresh_));
+      trackers_.back().fix_shape(fixed_shape_);
+    }
+  }
+  // Otherwise, we update the one with the biggest p
+  else{
+    trackers_[max_ind].update_position(ev_x, ev_y, max_p);
+  }
+
+  count_++;
+  if(count_%nb_ev_regulate_==0){
+    regulate_pool(ev_t);
+  }
+}
+
+
+
+void TrackerPool::get_tracker_center(std::vector<double> &cen_x, std::vector<double> &cen_y){
+  double temp_x, temp_y;
+  cen_x.clear();
+  cen_y.clear();
+
+  for(int ii=0; ii<trackers_.size(); ii++){
+    trackers_[ii].get_center(temp_x, temp_y);
+    cen_x.push_back(temp_x);
+    cen_y.push_back(temp_y);
+  }  
+}
+
+
+
+void TrackerPool::get_ellipse_parameters(std::vector<double> &a, std::vector<double> &b, std::vector<double> &alpha){
+  a.clear();
+  b.clear();
+  alpha.clear();
+  double temp_a, temp_b, temp_alpha;
+
+  for(int ii=0; ii<trackers_.size(); ii++){
+    trackers_[ii].get_ellipse_parameters(temp_a, temp_b, temp_alpha);
+    a.push_back(temp_a);
+    b.push_back(temp_b);
+    alpha.push_back(temp_alpha);
+  }  
+}
+
+
+
+void TrackerPool::display(yarp::sig::ImageOf<yarp::sig::PixelRgb> &img){
+  for(int ii=0; ii<trackers_.size(); ii++){
+      trackers_[ii].display(img);
+  }
+}
+
+
+
+void TrackerPool::get_tracker(BlobTracker &blobT, int index){
+  blobT = trackers_[index];
+}	
+
+
+void TrackerPool::regulate_pool(int ts){
+  // Apply the exponential decay of activity, and remove the filters that become inactive
+//printf("[tracker pool] : Regulating pool\n");
+  int dt = ts-ts_last_reg_;
+  if(dt>0){
+    double decay = exp(-(ts-ts_last_reg_)/tau_act_);
+    // We update the activity of each tracker.
+    for(int ii=0; ii<trackers_.size(); ii++){
+      trackers_[ii].update_activity(decay); 
+    }
+  }
+
+  ts_last_reg_ = ts;
+
+  apply_rep_field();
+}
+
+
+
+void TrackerPool::apply_rep_field(){
+  // Apply repulsion between filters
+  for(int ii=0; ii<trackers_.size(); ii++){
+    for(int jj=ii+1; jj<trackers_.size(); jj++){
+      // We compute the distance
+      //int dx = trackers_[ii].get_x()>trackers_[jj].get_x()?1:-1;
+      //int dy = trackers_[ii].get_y()>trackers_[jj].get_y()?1:-1;
+      int dx = trackers_[ii].get_x() - trackers_[jj].get_x();
+      int dy = trackers_[ii].get_y() - trackers_[jj].get_y();
+      double dist = sqrt(dx*dx + dy*dy);
+      //printf("distance = %f and d_rep = %d\n", dist, d_rep_);
+	
+      // If the distance is smaller than the minimum, we apply the repulsion filter
+      if(dist<d_rep_){
+	// The repulsion field will be a liner function of the distance. If the distance is zero, then it is one. If
+	// it is equal to d_rep, it will be zero
+	//printf("Alpha rep = %f\n", alpha_rep_);
+	double delta = alpha_rep_*(1-dist/d_rep_);
+	printf("delta = %f\n", delta);
+        //printf("distance = %f - delta = %f\n", dist, delta);
+	int dir_x = dx>0?-1:1;
+	int dir_y = dy>0?-1:1;
+        double act_sum = trackers_[ii].get_act()+trackers_[jj].get_act();
+        double f_i, f_j;
+
+	if(act_sum > 0){
+	  f_i = trackers_[jj].get_act()/act_sum;
+	  f_j = trackers_[ii].get_act()/act_sum;
+	}
+	else{
+	  f_i = 0.5;
+	  f_j = 0.5;
+	}
+	trackers_[ii].displace(f_i*delta*dir_x, f_i*delta*dir_y);
+	trackers_[jj].displace(-f_j*delta*dir_x, -f_j*delta*dir_y);
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1369061656 source:/home/akolkar/iCub/IzhikevicNeuron.cpp
+	"IzhikevicNeuron.h"
+
+1368625140 /home/akolkar/iCub/IzhikevicNeuron.h
+
+1372293292 source:/home/akolkar/iCub/endEffectorNeurons/main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<yarp/os/all.h>
+	<yarp/sig/all.h>
+	<yarp/dev/all.h>
+	"../IzhikevicNeuron.h"
+

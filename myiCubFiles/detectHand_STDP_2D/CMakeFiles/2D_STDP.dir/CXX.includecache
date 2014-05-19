@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/icub/myiCubFiles/detectHand_STDP_2D/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+math.h
+-
+yarp/os/all.h
+-
+yarp/dev/all.h
+-
+yarp/sig/all.h
+-
+

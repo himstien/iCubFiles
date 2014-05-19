@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../../lib/libcubmotor.a  CMakeFiles/cubmotor.dir/src/iCubMotor.cpp.o
+/usr/bin/ranlib ../../lib/libcubmotor.a

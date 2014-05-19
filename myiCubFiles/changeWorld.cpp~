@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+//#include <random>
+  /* Get all OS and signal processing YARP classes */
+#include <yarp/os/all.h>
+#include <yarp/sig/all.h>
+
+using namespace yarp::os;
+using namespace yarp::sig;
+
+
+int main() {
+	
+//	std::default_random_engine generator;
+//	std::normal_distribution<double> distribution(0.0, 10);
+
+    Network yarp; // set up yarp
+    Port ballMove;
+	
+    ballMove.open("/ball_move");
+    
+    Network::connect("/ball_move", "/icubSim/world");
+
+    Bottle reply; Bottle del_all("world del all"); 
+    Bottle createBall("world mk ssph 0.1 1 1 1 1 0 0");
+    ballMove.write(del_all, reply);
+    ballMove.write(createBall, reply);
+
+    double timeStart = Time::now();
+
+    while (1) { 
+	double t = Time::now() - timeStart;
+	double dx = cos(t);
+	double dy = sin(t);
+
+	Bottle moveObj("world set ssph 1");
+	moveObj.addDouble(dx/3);
+	moveObj.addDouble(dy/3+1);
+	moveObj.addDouble(1);
+	ballMove.write(moveObj, reply);
+    }
+    return 0;
+}

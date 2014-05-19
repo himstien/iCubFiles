@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/icub/myiCubFiles/convertToSpikes.cpp
+stdio.h
+-
+math.h
+-
+time.h
+-
+string
+-
+yarp/os/all.h
+-
+yarp/sig/all.h
+-
+

@@ -1,0 +1,314 @@
+# depslib dependency file v1.0
+1372804293 source:/home/akolkar/iCub/DVS_HAND_STDP/main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<math.h>
+	<yarp/os/all.h>
+	<yarp/dev/all.h>
+	<yarp/sig/all.h>
+	"eventRead.h"
+	"eventBuffer.h"
+	"eventBottle.h"
+	"eventBottleHandler.h"
+	"eventUnmask.h"
+	"eventCodec.h"
+	"eventConversion.h"
+
+1365091058 /home/akolkar/iCub/DVS_HAND_STDP/eventRead.h
+	<iostream>
+	<yarp/os/all.h>
+	"eventBottle.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventBottle.h
+	<yarp/os/all.h>
+	<cstring>
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventBuffer.h
+	<yarp/os/all.h>
+	<cstring>
+
+1364997602 /home/akolkar/iCub/DVS_HAND_STDP/eventBottleHandler.h
+	"eventBottle.h"
+	<yarp/os/Network.h>
+	<yarp/os/BufferedPort.h>
+	<yarp/sig/all.h>
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventUnmask.h
+	<iostream>
+	<sstream>
+	<ctime>
+	<cmath>
+	<cstring>
+	<stdint.h>
+	<yarp/os/Semaphore.h>
+	"eventBuffer.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventCodec.h
+	<yarp/os/all.h>
+	<string>
+	<deque>
+
+1364991914 /home/akolkar/iCub/DVS_HAND_STDP/eventConversion.h
+	"eventCodec.h"
+	<iostream>
+	<sstream>
+	<ctime>
+	<yarp/os/all.h>
+
+1364997056 source:/home/akolkar/iCub/DVS_HAND_STDP/convert.cpp
+	"convert.h"
+
+1364997069 /home/akolkar/iCub/DVS_HAND_STDP/convert.h
+	<iostream>
+	<ctime>
+	<list>
+	<yarp/os/all.h>
+	<yarp/sig/all.h>
+	"config.h"
+
+1364991417 /home/akolkar/iCub/DVS_HAND_STDP/config.h
+	<list>
+	<cstring>
+
+1372119467 source:/home/akolkar/iCub/DVS_HAND_STDP/eventAtom.cpp
+	"eventAtom.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventAtom.h
+
+1364993075 source:/home/akolkar/iCub/DVS_HAND_STDP/eventBottle.cpp
+	"eventBottle.h"
+
+1365000099 source:/home/akolkar/iCub/DVS_HAND_STDP/eventBottleHandler.cpp
+	"eventBottleHandler.h"
+	<cassert>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<ctime>
+	<list>
+	<string>
+
+1364991895 source:/home/akolkar/iCub/DVS_HAND_STDP/eventBuffer.cpp
+	"eventBuffer.h"
+
+1372119473 source:/home/akolkar/iCub/DVS_HAND_STDP/eventCodec.cpp
+	"eventCodec.h"
+
+1364991905 source:/home/akolkar/iCub/DVS_HAND_STDP/eventConversion.cpp
+	"eventConversion.h"
+	<cassert>
+	<cstring>
+
+1372119480 source:/home/akolkar/iCub/DVS_HAND_STDP/eventHistBuffer.cpp
+	"eventHistBuffer.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventHistBuffer.h
+	<yarp/os/all.h>
+	<iostream>
+	<cstring>
+
+1372119485 source:/home/akolkar/iCub/DVS_HAND_STDP/eventSpatiotemporalVolume.cpp
+	"eventSpatiotemporalVolume.h"
+
+1372119490 /home/akolkar/iCub/DVS_HAND_STDP/eventSpatiotemporalVolume.h
+	"eventAtom.h"
+
+1372119495 source:/home/akolkar/iCub/DVS_HAND_STDP/eventSpatiotemporalVolumeStack.cpp
+	"eventSpatiotemporalVolumeStack.h"
+
+1372119501 /home/akolkar/iCub/DVS_HAND_STDP/eventSpatiotemporalVolumeStack.h
+	<iostream>
+	<cstring>
+	"eventSpatiotemporalVolume.h"
+
+1372119507 source:/home/akolkar/iCub/DVS_HAND_STDP/eventUnmask.cpp
+	"eventUnmask.h"
+
+1364992312 source:/home/akolkar/iCub/DVS_HAND_STDP/eventUnmaskDVS128.cpp
+	"eventUnmaskDVS128.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventUnmaskDVS128.h
+	"eventBuffer.h"
+	"eventUnmask.h"
+
+1372119512 source:/home/akolkar/iCub/DVS_HAND_STDP/eventUnmaskICUB.cpp
+	"eventUnmaskICUB.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventUnmaskICUB.h
+	"eventUnmask.h"
+	<cstdio>
+
+1372119517 source:/home/akolkar/iCub/DVS_HAND_STDP/eventUnmaskICUBcircBuf.cpp
+	"eventUnmaskICUBcircBuf.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/eventUnmaskICUBcircBuf.h
+	"eventUnmask.h"
+	<yarp/os/Semaphore.h>
+	<cstdio>
+
+1364997219 source:/home/akolkar/iCub/DVS_HAND_STDP/unmask.cpp
+	<math.h>
+	<cassert>
+	"unmask.h"
+
+1364997145 /home/akolkar/iCub/DVS_HAND_STDP/unmask.h
+	<iostream>
+	<sstream>
+	<ctime>
+	<sys/types.h>
+	<yarp/os/all.h>
+	"config.h"
+	"eventCodec.h"
+
+1364991871 source:/home/akolkar/iCub/DVS_HAND_STDP/VelocityBuffer.cpp
+	"VelocityBuffer.h"
+
+1364991420 /home/akolkar/iCub/DVS_HAND_STDP/VelocityBuffer.h
+	<float.h>
+	<cmath>
+	<iostream>
+	<vector>
+	<yarp/os/Portable.h>
+	<yarp/os/Bottle.h>
+	<yarp/os/ConnectionReader.h>
+	<yarp/os/ConnectionWriter.h>
+
+1376652647 source:/home/akolkar/Programs/DVS_HAND_STDP/convert.cpp
+	"convert.h"
+
+1376653439 /home/akolkar/Programs/DVS_HAND_STDP/convert.h
+	<iostream>
+	<ctime>
+	<list>
+	<yarp/os/all.h>
+	<yarp/sig/all.h>
+	"config.h"
+
+1364991418 /home/akolkar/Programs/DVS_HAND_STDP/config.h
+	<list>
+	<cstring>
+
+1372119468 source:/home/akolkar/Programs/DVS_HAND_STDP/eventAtom.cpp
+	"eventAtom.h"
+
+1364991422 /home/akolkar/Programs/DVS_HAND_STDP/eventAtom.h
+
+1364993076 source:/home/akolkar/Programs/DVS_HAND_STDP/eventBottle.cpp
+	"eventBottle.h"
+
+1376653446 /home/akolkar/Programs/DVS_HAND_STDP/eventBottle.h
+	<yarp/os/all.h>
+	<cstring>
+
+1365000100 source:/home/akolkar/Programs/DVS_HAND_STDP/eventBottleHandler.cpp
+	"eventBottleHandler.h"
+	<cassert>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<ctime>
+	<list>
+	<string>
+
+1376653457 /home/akolkar/Programs/DVS_HAND_STDP/eventBottleHandler.h
+	"eventBottle.h"
+	<yarp/os/Network.h>
+	<yarp/os/BufferedPort.h>
+	<yarp/sig/all.h>
+
+1364991896 source:/home/akolkar/Programs/DVS_HAND_STDP/eventBuffer.cpp
+	"eventBuffer.h"
+
+1376653462 /home/akolkar/Programs/DVS_HAND_STDP/eventBuffer.h
+	<yarp/os/all.h>
+	<cstring>
+
+1376652327 source:/home/akolkar/Programs/DVS_HAND_STDP/eventCodec.cpp
+	"eventCodec.h"
+
+1376653472 /home/akolkar/Programs/DVS_HAND_STDP/eventCodec.h
+	<yarp/os/all.h>
+	<string>
+	<deque>
+
+1364991906 source:/home/akolkar/Programs/DVS_HAND_STDP/eventConversion.cpp
+	"eventConversion.h"
+	<cassert>
+	<cstring>
+
+1376653401 /home/akolkar/Programs/DVS_HAND_STDP/eventConversion.h
+	"eventCodec.h"
+	<iostream>
+	<sstream>
+	<ctime>
+
+1372119482 source:/home/akolkar/Programs/DVS_HAND_STDP/eventHistBuffer.cpp
+	"eventHistBuffer.h"
+
+1376653479 /home/akolkar/Programs/DVS_HAND_STDP/eventHistBuffer.h
+	<yarp/os/all.h>
+	<iostream>
+	<cstring>
+
+1372119486 source:/home/akolkar/Programs/DVS_HAND_STDP/eventSpatiotemporalVolume.cpp
+	"eventSpatiotemporalVolume.h"
+
+1372119492 /home/akolkar/Programs/DVS_HAND_STDP/eventSpatiotemporalVolume.h
+	"eventAtom.h"
+
+1372119496 source:/home/akolkar/Programs/DVS_HAND_STDP/eventSpatiotemporalVolumeStack.cpp
+	"eventSpatiotemporalVolumeStack.h"
+
+1372119502 /home/akolkar/Programs/DVS_HAND_STDP/eventSpatiotemporalVolumeStack.h
+	<iostream>
+	<cstring>
+	"eventSpatiotemporalVolume.h"
+
+1372119508 source:/home/akolkar/Programs/DVS_HAND_STDP/eventUnmask.cpp
+	"eventUnmask.h"
+
+1364991422 /home/akolkar/Programs/DVS_HAND_STDP/eventUnmask.h
+	<iostream>
+	<sstream>
+	<ctime>
+	<cmath>
+	<cstring>
+	<stdint.h>
+	<yarp/os/Semaphore.h>
+	"eventBuffer.h"
+
+1364992314 source:/home/akolkar/Programs/DVS_HAND_STDP/eventUnmaskDVS128.cpp
+	"eventUnmaskDVS128.h"
+
+1364991422 /home/akolkar/Programs/DVS_HAND_STDP/eventUnmaskDVS128.h
+	"eventBuffer.h"
+	"eventUnmask.h"
+
+1376653430 source:/home/akolkar/Programs/DVS_HAND_STDP/main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<math.h>
+	<yarp/os/all.h>
+	<yarp/dev/all.h>
+	<yarp/sig/all.h>
+	"eventRead.h"
+	"eventBuffer.h"
+	"eventBottle.h"
+	"eventBottleHandler.h"
+	"eventUnmask.h"
+	"eventCodec.h"
+	"eventConversion.h"
+
+1365091060 /home/akolkar/Programs/DVS_HAND_STDP/eventRead.h
+	<iostream>
+	<yarp/os/all.h>
+	"eventBottle.h"
+

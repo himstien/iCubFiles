@@ -1,0 +1,1 @@
+/home/icub/myiCubFiles/detectHand_STDP_2D/CMakeFiles/2D_STDP.dir

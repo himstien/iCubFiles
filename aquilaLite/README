@@ -1,0 +1,46 @@
+About the libraries
+-------------------
+
+These libraries are lightweight versions of modules
+from the Aquila cognitive robotics framework:
+
+http://aquila.sourceforge.net/
+
+
+They have been created to enable use of the functionality 
+in iCub C++ programs without the overhead of installing
+the full Aquila.
+
+Tracker  (libtracker)
+---------------------
+
+Allows easy extraction of objects from the scene by using
+a saturation view. Bounding boxes are calculated for each
+distinct object and are streamed to a data port. Tracker can
+also locate motion in the scene.
+
+iCubMotor (libcubmotor)
+-----------------------
+
+Provides a few useful utilities for iCub movements.
+
+moveHead(x,y) moves the icub head to look at a position in
+image coordinates (x,y)
+
+point()  allows iCub to point where the head is looking 
+(this functionality is still under construction as it requires
+a cartesian controller to be running)
+
+
+To build the aquila libraries
+-----------------------------
+
+1. cd to build directory
+
+2. do ccmake ../
+
+3. do sudo make install to install libtracker and libcubmotor to /usr/local/lib
+
+4. manually copy the include files to /usr/local/include
+
+

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/icub/CapoCaccia/blobTracker/blob_tracker.cpp
+blob_tracker.h
+/home/icub/CapoCaccia/blobTracker/blob_tracker.h
+
+/home/icub/CapoCaccia/blobTracker/blob_tracker.h
+math.h
+-
+

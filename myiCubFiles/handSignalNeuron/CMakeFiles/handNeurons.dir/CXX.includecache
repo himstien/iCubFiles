@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/icub/myiCubFiles/handSignalNeuron/IzhikevicNeuron.h
+
+/home/icub/myiCubFiles/handSignalNeuron/main.cpp
+iostream
+-
+yarp/os/all.h
+-
+yarp/sig/all.h
+-
+yarp/dev/all.h
+-
+vector
+-
+IzhikevicNeuron.h
+/home/icub/myiCubFiles/handSignalNeuron/IzhikevicNeuron.h
+

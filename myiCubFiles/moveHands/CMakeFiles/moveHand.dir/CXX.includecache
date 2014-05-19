@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/icub/myiCubFiles/moveHands/moveHands.cpp
+stdio.h
+-
+yarp/os/Network.h
+-
+yarp/dev/ControlBoardInterfaces.h
+-
+yarp/dev/PolyDriver.h
+-
+yarp/os/Time.h
+-
+yarp/sig/Vector.h
+-
+string
+-
+

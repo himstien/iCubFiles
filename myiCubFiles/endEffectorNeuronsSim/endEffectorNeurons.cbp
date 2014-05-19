@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="endEffectorNeurons" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/endEffectorNeurons" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/endEffectorNeurons" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Linker>
+			<Add library="/usr/local/lib/libactionPrimitives.so" />
+			<Add library="/usr/local/lib/libarmcalibrator.so" />
+			<Add library="/usr/local/lib/libarmcalibratorj4.so" />
+			<Add library="/usr/local/lib/libarmcalibratorj8.so" />
+			<Add library="/usr/local/lib/libboostMIL.so" />
+			<Add library="/usr/local/lib/libcanLoaderLib.so" />
+			<Add library="/usr/local/lib/libcartesiancontrollerclient.so" />
+			<Add library="/usr/local/lib/libcartesiancontrollerserver.so" />
+			<Add library="/usr/local/lib/libcontrolboardwrapper2.so" />
+			<Add library="/usr/local/lib/libctrlLib.so" />
+			<Add library="/usr/local/lib/libdebugInterfaceClient.so" />
+			<Add library="/usr/local/lib/libdebugStream.so" />
+			<Add library="/usr/local/lib/libDFKI_hand_calibrator.so" />
+			<Add library="/usr/local/lib/libgazecontrollerclient.so" />
+			<Add library="/usr/local/lib/libhandcalibrator.so" />
+			<Add library="/usr/local/lib/libheadcalibrator.so" />
+			<Add library="/usr/local/lib/libheadcalibratorV2.so" />
+			<Add library="/usr/local/lib/libiCubDev.so" />
+			<Add library="/usr/local/lib/libicubmod.so" />
+			<Add library="/usr/local/lib/libiCubTestLib.so" />
+			<Add library="/usr/local/lib/libiCubVis.so" />
+			<Add library="/usr/local/lib/libiDyn.so" />
+			<Add library="/usr/local/lib/libiKin.so" />
+			<Add library="/usr/local/lib/liblearningMachine.so" />
+			<Add library="/usr/local/lib/liblegscalibrator.so" />
+			<Add library="/usr/local/lib/liblib0.so" />
+			<Add library="/usr/local/lib/liblib1.so" />
+			<Add library="/usr/local/lib/liblogpolar.so" />
+			<Add library="/usr/local/lib/libopencv_calib3d.so" />
+			<Add library="/usr/local/lib/libopencv_contrib.so" />
+			<Add library="/usr/local/lib/libopencv_core.so" />
+			<Add library="/usr/local/lib/libopencv_features2d.so" />
+			<Add library="/usr/local/lib/libopencv_flann.so" />
+			<Add library="/usr/local/lib/libopencv_gpu.so" />
+			<Add library="/usr/local/lib/libopencv_highgui.so" />
+			<Add library="/usr/local/lib/libopencv_imgproc.so" />
+			<Add library="/usr/local/lib/libopencv_legacy.so" />
+			<Add library="/usr/local/lib/libopencv_ml.so" />
+			<Add library="/usr/local/lib/libopencv_nonfree.so" />
+			<Add library="/usr/local/lib/libopencv_objdetect.so" />
+			<Add library="/usr/local/lib/libopencv_photo.so" />
+			<Add library="/usr/local/lib/libopencv_stitching.so" />
+			<Add library="/usr/local/lib/libopencv_ts.so" />
+			<Add library="/usr/local/lib/libopencv_video.so" />
+			<Add library="/usr/local/lib/libopencv_videostab.so" />
+			<Add library="/usr/local/lib/liboptimization.so" />
+			<Add library="/usr/local/lib/libperceptiveModels.so" />
+			<Add library="/usr/local/lib/libpmp.so" />
+			<Add library="/usr/local/lib/libsharksWithLasers.so" />
+			<Add library="/usr/local/lib/libskinDynLib.so" />
+			<Add library="/usr/local/lib/libTalkingHeadcalibrator.so" />
+			<Add library="/usr/local/lib/libyarp_bayer.so" />
+			<Add library="/usr/local/lib/libyarpcar.so" />
+			<Add library="/usr/local/lib/libYARP_dev.so" />
+			<Add library="/usr/local/lib/libYARP_init.so" />
+			<Add library="/usr/local/lib/libYARP_math.so" />
+			<Add library="/usr/local/lib/libYARP_name.so" />
+			<Add library="/usr/local/lib/libYARP_OS.so" />
+			<Add library="/usr/local/lib/libYARP_serversql.a" />
+			<Add library="/usr/local/lib/libYARP_sig.so" />
+		</Linker>
+		<Unit filename="../IzhikevicNeuron.cpp" />
+		<Unit filename="../IzhikevicNeuron.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
