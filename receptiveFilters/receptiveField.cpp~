@@ -1,0 +1,54 @@
+// Author: Himanshu Akolkar
+
+// Library for getting receptive fields and applying them on iCub with DVS input.
+
+
+#include "receptiveField.h"
+
+using namespace yarp::os;
+
+receptiveField::receptiveField()
+{
+
+// Initializing with parameters for a typical pyramidal cell
+size = 32;
+weightVector.resize(size*size);
+    //ctor
+}
+
+receptiveField::~receptiveField()
+{
+    //dtor
+}
+
+
+bool IzhikevicNeuron::updatePotential(double inputCurrent, unsigned long int currentTime)
+{
+    double vdot = (k*(potential-Vrest)*(potential-Vthreshold) - inhibitor + (double) inputCurrent)/C;
+    double udot = a*(b*(potential-Vrest)-inhibitor);
+
+    potential = potential + vdot;
+    inhibitor = inhibitor + udot;
+
+    if (potential > Vthreshold){
+        lastSpikeTime = (long unsigned int) currentTime;
+        numSpikes = numSpikes+1;
+        potential = c;
+        inhibitor = inhibitor + d;
+    }
+
+    return 1;
+}
+
+void receptiveField::setWeights(string filename, vector weightvector, int fieldSize)
+{
+	File fid;
+	fid.open(filename.c_str(), 'r');
+	
+	for(int n=0; n < fieldSize*fieldSize; n++)
+	{
+		weightVector[n] = fscanf(fid, %d, 1);
+	}
+}
+
+
