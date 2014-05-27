@@ -184,27 +184,30 @@ int main(int numArgs, char** args)
 				}
 			}
 		}	
+		
 		image_hand_neurons_port.write(image_hand_neurons);
 		numIters++;
-    		yarp::os::Bottle *bottle = (*evBottle).get_packet();
-    		emorph::ecodec::eEventQueue q;
-    		int sizeOfQ;
-    		if(bottle){
-    			emorph::ecodec::eEvent::decode(*bottle, q);
-        		sizeOfQ = q.size();
-    		}
-    		else{
+    	yarp::os::Bottle *bottle = (*evBottle).get_packet();
+    	emorph::ecodec::eEventQueue q;
+    	
+    	int sizeOfQ;
+    	
+    	if(bottle){
+			emorph::ecodec::eEvent::decode(*bottle, q);
+        	sizeOfQ = q.size();
+    	}
+    	else{
 			sizeOfQ = 0;
-    		}
+    	}
     
     // If the number of events is lower than a predefined threshold, then we assume we are getting just noise, and we do nothing
-    		if(sizeOfQ > 0){
-      			int ev_x, ev_y, pol, channel, ev_t;
+    	if(sizeOfQ > 0){
+      		int ev_x, ev_y, pol, channel, ev_t;
 
-      			bool address_ev_found = false;
-      			bool ts_found = false;
+      		bool address_ev_found = false;
+      		bool ts_found = false;
       // We go through all the events
-      			for (int ii=0; ii < sizeOfQ; ii++){
+      		for (int ii=0; ii < sizeOfQ; ii++){
 	// We need the adress event first
 				if (q[ii]->getType() == "AE"){
 	  // We decode the event
