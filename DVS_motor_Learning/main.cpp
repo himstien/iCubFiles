@@ -6,7 +6,12 @@
 
 #include <yarp/os/all.h>
 #include <yarp/sig/all.h>
-#include <yarp/dev/all.h>
+
+#include <yarp/dev/Drivers.h>
+#include <yarp/dev/CartesianControl.h>
+#include <yarp/dev/PolyDriver.h>
+
+YARP_DECLARE_DEVICES(icubmod)
 
 //#include "unmask.h"
 #include "eventCodec.h"
@@ -15,12 +20,18 @@
 
 int main(int numArgs, char** args)
 {
+	YARP_REGISTER_DEVICES(icubmod)
 	int last_t_display;
 	yarp::os::Network yarp;
-	std::string filename = "dvsEvents.txt";
+	std::string filename = "dvs_hand_states.txt";
 
+	yarp::sig::Vector leftHandWeights; leftHandWeights.resize(128*128);
+	yarp::sig::Vector rightHandWeights; rightHandWeights.resize(128*128);
+		
 	yarp::sig::Vector handNeurons;
 	handNeurons.resize(1000);
+	
+	
 	
 	for (int x=0; x < 10; x++)
 	{	
@@ -32,6 +43,7 @@ int main(int numArgs, char** args)
 			}
 		}
 	}
+
 	yarp::sig::ImageOf<yarp::sig::PixelRgb> image_hand_neurons;
 	image_hand_neurons.resize(70,70);	
 	yarp::os::Port image_hand_neurons_port;
@@ -64,6 +76,23 @@ int main(int numArgs, char** args)
   	}
   	printf("Connected to iCub's DVS port\n");
 
+	yarp::dev::PolyDriver         client;	
+	yarp::dev::ICartesianControl *icart;
+	
+	yarp::dev::Property option("(device cartesiancontrollerclient)");
+	option.put("remote","/icubSim/cartesianController/left_arm");
+	option.put("local","/cartesian_client/left_arm");
+	
+	if(!client.open(option))
+		{printf("Cartestian controller not running! Quitting now. \n"); return(0);}
+	
+	client.view(icart);
+	
+	yarp::os::Bottle info;
+	icart->getInfo(info);
+	printf("Info: %s\n", info.toString().c_str());
+	
+	
 	yarp::os::BufferedPort<yarp::os::Bottle> handPose;
  	yarp::os::Bottle *handPos;
 
@@ -72,7 +101,7 @@ int main(int numArgs, char** args)
   	(handPose).open(local_hand_port_name.c_str());
   	printf("Created port %s to get data from hand motion!!\n\n", local_hand_port_name.c_str());
 
- // And we try to connect it to the port generating the events
+// And we try to connect it to the port generating the events
   	std::string remote_hand_port_name = "/icub/cartesianController/left_arm/state:o";
   	connectionOk = yarp.connect(remote_hand_port_name.c_str(), local_hand_port_name.c_str());
 
@@ -82,7 +111,7 @@ int main(int numArgs, char** args)
   	}
   	printf("Connected to iCub's hand port\n");
   
-
+	
   // Variable controlling the loop
   	bool run = true;
 
