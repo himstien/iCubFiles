@@ -36,7 +36,7 @@ include_directories(${YARP_INCLUDE_DIRS})
 #link_libraries(${CUBMOTOR_LIB})
 
 include_directories(${ICUB_INCLUDE_DIRS})
-#link_libraries(icubmod)
+link_libraries(icubmod)
 
 # Set up our main executable.
 if (folder_source)

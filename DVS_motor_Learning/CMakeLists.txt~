@@ -14,7 +14,6 @@ project(${KEYWORD})
 
 # Find YARP.  Point the YARP_DIR environment variable at your build.
 find_package(YARP REQUIRED)
-FIND_PACKAGE(cubmotor REQUIRED)
 
 list(APPEND CMAKE_MODULE_PATH ${YARP_MODULE_PATH})
 

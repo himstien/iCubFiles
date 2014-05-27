@@ -216,7 +216,6 @@ CMakeFiles/dvs_hand_learn.dir/main.cpp.o
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
- /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Log.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/ManagedBytes.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
@@ -271,57 +270,10 @@ CMakeFiles/dvs_hand_learn.dir/main.cpp.o
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/api.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/begin_pack_for_net.h
  /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/end_pack_for_net.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/AudioGrabberInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/AudioVisualInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/CalibratorInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/CartesianControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ControlBoardInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ControlBoardInterfacesImpl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ControlBoardPid.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/DataSource.h
  /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/DeviceDriver.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/DriverLinkCreator.h
  /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/Drivers.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/FrameGrabberInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/GPUInterface.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/GazeControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/GenericSensorInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IControlLimits2.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IControlLimits2Impl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IControlMode.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IEncoders.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IEncodersTimed.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IImpedanceControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IKinectDeviceDriver.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IOpenLoopControl.h
  /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IPositionControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IPositionControl2.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IPositionControl2Impl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IPositionDirect.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IPositionDirectImpl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ITorqueControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IVelocityControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IVelocityControl2.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/IVelocityControl2Impl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ImplementControlBoardInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ImplementControlMode.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ImplementEncodersTimed.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ImplementImpedanceControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ImplementOpenLoopControl.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ImplementTorqueControl.h
  /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/PolyDriver.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/PolyDriverDescriptor.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/PolyDriverList.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/PreciselyTimed.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/RemoteFrameGrabber.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ServerFrameGrabber.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ServerInertial.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ServerSoundGrabber.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/ServiceInterfaces.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/TestFrameGrabber.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/TestMotor.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/Wrapper.h
- /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/all.h
  /usr/local/src/robot/yarp/src/libYARP_dev/include/yarp/dev/api.h
  /usr/local/src/robot/yarp/src/libYARP_sig/include/yarp/sig/Image.h
  /usr/local/src/robot/yarp/src/libYARP_sig/include/yarp/sig/ImageDraw.h

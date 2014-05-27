@@ -8,7 +8,7 @@
 #include <yarp/sig/all.h>
 
 #include <yarp/dev/Drivers.h>
-#include <yarp/dev/CartesianControl.h>
+#include <yarp/dev/IPositionControl.h>
 #include <yarp/dev/PolyDriver.h>
 
 YARP_DECLARE_DEVICES(icubmod)
@@ -76,23 +76,19 @@ int main(int numArgs, char** args)
   	}
   	printf("Connected to iCub's DVS port\n");
 
-	yarp::dev::PolyDriver         client;	
-	yarp::dev::ICartesianControl *icart;
+	yarp::dev::PolyDriver	client;	
+	yarp::dev::IPositionControl *ipos;
 	
-	yarp::os::Property option("(device cartesiancontrollerclient)");
-	option.put("remote","/icubSim/cartesianController/left_arm");
+	yarp::os::Property option("(device remote_controlboard)");
+	option.put("remote","/icub/left_arm");
 	option.put("local","/cartesian_client/left_arm");
 	
 	if(!client.open(option))
 		{printf("Cartestian controller not running! Quitting now. \n"); return(0);}
 	
-	client.view(icart);
+	client.view(ipos);
 	
-	yarp::os::Bottle info;
-	icart->getInfo(info);
-	printf("Info: %s\n", info.toString().c_str());
-	
-	
+
 	yarp::os::BufferedPort<yarp::os::Bottle> handPose;
  	yarp::os::Bottle *handPos;
 
@@ -183,14 +179,11 @@ int main(int numArgs, char** args)
 
 
 		handNeurons[handX*10 + handY*10 + handZ] = handNeurons[handX*10 + handY*10 + handZ] + 1;    		
+		
+		bool moving=true;
 
-		while(true){
-			handPos->clear();
-			handPos = handEvents.read();
-			printf("Trying to read events from hand\n");
-			if(handPos !=NULL)
-				printf("Any events %s", handPos->toString().c_str());		
-		}
+		ipos->checkMotionDone(&moving);
+
 		
 		unsigned int t = yarp::os::Time::now();
 		for (int xN=0; xN < 70; xN++)
