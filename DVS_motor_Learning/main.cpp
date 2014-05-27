@@ -79,7 +79,7 @@ int main(int numArgs, char** args)
 	yarp::dev::PolyDriver         client;	
 	yarp::dev::ICartesianControl *icart;
 	
-	yarp::dev::Property option("(device cartesiancontrollerclient)");
+	yarp::os::Property option("(device cartesiancontrollerclient)");
 	option.put("remote","/icubSim/cartesianController/left_arm");
 	option.put("local","/cartesian_client/left_arm");
 	
@@ -101,11 +101,9 @@ int main(int numArgs, char** args)
   	(handPose).open(local_hand_port_name.c_str());
   	printf("Created port %s to get data from hand motion!!\n\n", local_hand_port_name.c_str());
 
-<<<<<<< HEAD
  // And we try to connect it to find hand position
-=======
+
 // And we try to connect it to the port generating the events
->>>>>>> cbf3962d4b4a5e019254e19095fe9e983da7db8f
   	std::string remote_hand_port_name = "/icub/cartesianController/left_arm/state:o";
   	connectionOk = yarp.connect(remote_hand_port_name.c_str(), local_hand_port_name.c_str());
 
