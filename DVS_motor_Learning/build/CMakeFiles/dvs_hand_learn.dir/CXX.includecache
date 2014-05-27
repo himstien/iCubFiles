@@ -164,6 +164,10 @@ yarp/os/Searchable.h
 yarp/os/PortReader.h
 -
 
+/usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
+yarp/os/api.h
+-
+
 /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Log.h
 stdio.h
 -
@@ -576,6 +580,8 @@ yarp/os/Searchable.h
 yarp/os/Semaphore.h
 -
 yarp/os/Mutex.h
+-
+yarp/os/LockGuard.h
 -
 yarp/os/Event.h
 -

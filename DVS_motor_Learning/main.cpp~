@@ -72,7 +72,7 @@ int main(int numArgs, char** args)
   	(handPose).open(local_hand_port_name.c_str());
   	printf("Created port %s to get data from hand motion!!\n\n", local_hand_port_name.c_str());
 
- // And we try to connect it to the port generating the events
+ // And we try to connect it to find hand position
   	std::string remote_hand_port_name = "/icub/cartesianController/left_arm/state:o";
   	connectionOk = yarp.connect(remote_hand_port_name.c_str(), local_hand_port_name.c_str());
 
@@ -81,6 +81,25 @@ int main(int numArgs, char** args)
     		connectionOk = yarp.connect(remote_hand_port_name.c_str(), local_hand_port_name.c_str());
   	}
   	printf("Connected to iCub's hand port\n");
+
+
+////////////////////////////////////////////////////////////////////////////////////
+	yarp::os::BufferedPort<yarp::os::Bottle> handEvents;
+
+
+  	std::string local_hand_events_port_name = "/handReadEvents:i";
+  	(handEvents).open(local_hand_events_port_name.c_str());
+  	printf("Created port %s to get data from hand events!!\n\n", local_hand_events_port_name.c_str());
+
+ // And we try to connect it to the port generating the events
+  	std::string remote_hand_events_port_name = "/icub/cartesianController/left_arm/events:o";
+  	connectionOk = yarp.connect(remote_hand_events_port_name.c_str(), local_hand_events_port_name.c_str());
+
+  	printf("Waiting for hand port to go alive!!!  Check if robotInterface/iCubInterface and iKinCartesianSolver  is running! %d\n", connectionOk);	
+  	while (!connectionOk){
+    		connectionOk = yarp.connect(remote_hand_events_port_name.c_str(), local_hand_events_port_name.c_str());
+  	}
+  	printf("Connected to iCub's hand events port\n");
   
 
   // Variable controlling the loop
@@ -134,8 +153,13 @@ int main(int numArgs, char** args)
 
 		handNeurons[handX*10 + handY*10 + handZ] = handNeurons[handX*10 + handY*10 + handZ] + 1;    		
 
-				
-	
+		while(true){
+			handPos->clear();
+			handPos = handEvents.read();
+			if(handPos !=NULL)
+				printf("Any events %s", handPos->toString().c_str());		
+		}
+		
 		unsigned int t = yarp::os::Time::now();
 		for (int xN=0; xN < 70; xN++)
 		{

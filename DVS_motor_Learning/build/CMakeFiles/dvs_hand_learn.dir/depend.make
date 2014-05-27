@@ -64,6 +64,7 @@ CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/l
 CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
 CMakeFiles/dvs_hand_learn.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/NameStore.h
@@ -137,6 +138,7 @@ CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/li
 CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
 CMakeFiles/dvs_hand_learn.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/NameStore.h
@@ -212,6 +214,7 @@ CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_
 CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Log.h
 CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/ManagedBytes.h
 CMakeFiles/dvs_hand_learn.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
@@ -352,6 +355,7 @@ CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYAR
 CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
 CMakeFiles/dvs_hand_learn.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/NameStore.h
