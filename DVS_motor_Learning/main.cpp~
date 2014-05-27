@@ -22,11 +22,12 @@ int main(int numArgs, char** args)
 {
 	YARP_REGISTER_DEVICES(icubmod)
 	int last_t_display;
+	int firstTimeStamp;
 	yarp::os::Network yarp;
 	std::string filename = "dvs_hand_states.txt";
 
-	yarp::sig::Vector leftHandWeights; leftHandWeights.resize(128*128);
-	yarp::sig::Vector rightHandWeights; rightHandWeights.resize(128*128);
+	yarp::sig::Vector leftHandWeights; leftHandWeights.resize(128*128); leftHandWeights.zero();
+	yarp::sig::Vector rightHandWeights; rightHandWeights.resize(128*128); rightHandWeights.zero();
 		
 	yarp::sig::Vector handNeurons;
 	handNeurons.resize(1000);
@@ -48,8 +49,14 @@ int main(int numArgs, char** args)
 	image_hand_neurons.resize(70,70);	
 	yarp::os::Port image_hand_neurons_port;
 	image_hand_neurons_port.open("/image_hand_neurons");
+
+	yarp::sig::ImageOf<yarp::sig::PixelRgb> image_hand_weights;
+	image_hand_weights.resize(128,128);	
+	yarp::os::Port image_hand_weights_port;
+	image_hand_weights_port.open("/image_hand_weights");	
 	
 	IzhikevicNeuron izhHandNeurons[70][70];
+	IzhikevicNeuron handIzhNeuronLeft, handIzhNeuronRight;
 
   // File for outputing the data
 	FILE *output_file;
@@ -77,7 +84,9 @@ int main(int numArgs, char** args)
   	printf("Connected to iCub's DVS port\n");
 
 	yarp::dev::PolyDriver	client;	
+	yarp::dev::PolyDriver	clientRight;	
 	yarp::dev::IPositionControl *ipos;
+	yarp::dev::IPositionControl *iposRight;
 	
 	yarp::os::Property option("(device remote_controlboard)");
 	option.put("remote","/icub/left_arm");
@@ -88,6 +97,15 @@ int main(int numArgs, char** args)
 	
 	client.view(ipos);
 	
+//	yarp::os::Property option("(device remote_controlboard)");
+	option.put("remote","/icub/right_arm");
+	option.put("local","/cartesian_client/right_arm");
+	
+	if(!clientRight.open(option))
+		{printf("Cartestian controller not running! Quitting now. \n"); return(0);}
+	
+	clientRight.view(iposRight);
+
 
 	yarp::os::BufferedPort<yarp::os::Bottle> handPose;
  	yarp::os::Bottle *handPos;
@@ -160,7 +178,7 @@ int main(int numArgs, char** args)
 		{
 			minZ = ((*handPos).get(2).asDouble()*100);
 		}
-		std::printf("Min Hand Location: %f:%f:%f \n", minX, minY, minZ);
+	//	std::printf("Min Hand Location: %f:%f:%f \n", minX, minY, minZ);
 		
 
 		if ( ((*handPos).get(0).asDouble()*100) > maxX)
@@ -175,20 +193,17 @@ int main(int numArgs, char** args)
 		{
 			maxZ = ((*handPos).get(2).asDouble()*100);
 		}
-		std::printf("Max Hand Location: %f:%f:%f \n", maxX, maxY, maxZ);
+	//	std::printf("Max Hand Location: %f:%f:%f \n", maxX, maxY, maxZ);
 
 
 		handNeurons[handX*10 + handY*10 + handZ] = handNeurons[handX*10 + handY*10 + handZ] + 1;    		
 		
-		bool moving=true;
+		bool movingLeft=true;
+		bool movingRight=true;
 
-		while(true){
-	//		handPos->clear();
-	//		handPos = handEvents.read();
-			ipos->checkMotionDone(&moving);
-			printf("Info: %d\n", moving);
-		}
-		
+		ipos->checkMotionDone(&movingLeft);
+		iposRight->checkMotionDone(&movingRight);
+
 		unsigned int t = yarp::os::Time::now();
 		for (int xN=0; xN < 70; xN++)
 		{
@@ -211,14 +226,14 @@ int main(int numArgs, char** args)
 		
 		image_hand_neurons_port.write(image_hand_neurons);
 		numIters++;
-    	yarp::os::Bottle *bottle = (*evBottle).get_packet();
-    	emorph::ecodec::eEventQueue q;
+	    	yarp::os::Bottle *bottle = (*evBottle).get_packet();
+	    	emorph::ecodec::eEventQueue q;
     	
     	int sizeOfQ;
     	
     	if(bottle){
 			emorph::ecodec::eEvent::decode(*bottle, q);
-        	sizeOfQ = q.size();
+	        	sizeOfQ = q.size();
     	}
     	else{
 			sizeOfQ = 0;
@@ -226,12 +241,18 @@ int main(int numArgs, char** args)
     
     // If the number of events is lower than a predefined threshold, then we assume we are getting just noise, and we do nothing
     	if(sizeOfQ > 0){
+
+		ipos->checkMotionDone(&movingLeft);
+		iposRight->checkMotionDone(&movingRight);
+
       		int ev_x, ev_y, pol, channel, ev_t;
 
       		bool address_ev_found = false;
       		bool ts_found = false;
+		bool first_ts_found = false;
+		
       // We go through all the events
-      		for (int ii=0; ii < sizeOfQ; ii++){
+      		for (int ii = sizeOfQ-1; ii > -1; ii--){
 	// We need the adress event first
 				if (q[ii]->getType() == "AE"){
 	  // We decode the event
@@ -251,23 +272,54 @@ int main(int numArgs, char** args)
 	  				emorph::ecodec::TimeStamp *ts = static_cast<emorph::ecodec::TimeStamp*>(q[ii]); 
 	  				if (ts->isValid()){
 	    					ev_t = ts->getStamp();
+						if(!first_ts_found)
+							firstTimeStamp = ev_t;
+
 	    					ts_found = true;
+						first_ts_found = true;
 	  				}
 				}
 
 	// If we have both the adress and the timestamp, we update the trackers
 				if(address_ev_found && ts_found){
-	  				if(ev_x>=0 && ev_x <= 127 && ev_y>=0 && ev_y <= 127){
+	  				if(ev_x>=0 && ev_x <= 127 && ev_y>=0 && ev_y <= 127 && channel ==0){ //
+
+						handIzhNeuronLeft.updatePotential((!movingLeft)*1000.0, ev_t);
+						handIzhNeuronRight.updatePotential((!movingRight)*1000.0, ev_t);
+
+						printf("Arm Moving?? = %d : %f : %f : %f\n", !movingRight, exp(-(ev_t-handIzhNeuronRight.getLastSpikeTime())/150), (ev_t-handIzhNeuronRight.getLastSpikeTime()), rightHandWeights[ev_x*128+ev_y] );
+						if(!movingLeft)
+						{
+							leftHandWeights[ev_x*128+ev_y] = leftHandWeights[ev_x*128+ev_y] + 15*exp( -(ev_t-handIzhNeuronLeft.getLastSpikeTime() )/150);	
+						}
+						else
+						{	
+							leftHandWeights[ev_x*128+ev_y] = leftHandWeights[ev_x*128+ev_y] - 7 + 10*exp( -(ev_t-handIzhNeuronLeft.getLastSpikeTime()-ev_t )/150);
+						}
+
+						if(!movingRight)
+						{
+							rightHandWeights[ev_x*128+ev_y] = rightHandWeights[ev_x*128+ev_y] + 15*exp( -(ev_t-handIzhNeuronRight.getLastSpikeTime() )/150);	
+						}
+						else
+						{	
+							rightHandWeights[ev_x*128+ev_y] = rightHandWeights[ev_x*128+ev_y] - 7 + 10*exp( -(ev_t-handIzhNeuronRight.getLastSpikeTime() )/150);	
+						}
+
+
+						image_hand_weights.pixel(ev_y, ev_x).r = (leftHandWeights[ev_x*128+ev_y]>0)?leftHandWeights[ev_x*128+ev_y]:0;
+//						image_hand_weights.pixel(ev_y, ev_x).r = image_hand_weights.pixel(ev_y, ev_x).r - rightHandWeights[ev_x*128+ev_y];						
+						image_hand_weights.pixel(ev_y, ev_x).b = (rightHandWeights[ev_x*128+ev_y]>0)?rightHandWeights[ev_x*128+ev_y]:0;						
           				}
 	  				address_ev_found = false;
 	  				ts_found = false;
 	  				if(ev_t - last_t_display >= 0 || ev_t - last_t_display < 0){
 	    // We update the images of the ellipses
-	    					last_t_display = ev_t;
+	    				//	last_t_display = ev_t;
 	  				}
 				}
 			}
-		}
+		} image_hand_weights_port.write(image_hand_weights);
 	}
 	fclose(output_file);	
 }
