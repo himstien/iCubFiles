@@ -59,11 +59,11 @@ int main(int numArgs, char** args)
 	IzhikevicNeuron handIzhNeuronLeft, handIzhNeuronRight;
 
   // File for outputing the data
-	FILE *output_file;
-  	output_file = fopen (filename.c_str(), "w");
+	std::ofstream output_file; //FILE *output_file;
+  	output_file.open(filename.c_str(), std::ofstream::out); //output_file = fopen (filename.c_str(), "wb+rb");
 	if (output_file == NULL) 
 	    perror ("Error opening file");
-  
+		
   // We create the port in which we will receive the DVS events
   	yarp::os::BufferedPort<eventBottle> dvs_port;
   	eventBottle *evBottle;
@@ -115,8 +115,6 @@ int main(int numArgs, char** args)
   	(handPose).open(local_hand_port_name.c_str());
   	printf("Created port %s to get data from hand motion!!\n\n", local_hand_port_name.c_str());
 
- // And we try to connect it to find hand position
-
 // And we try to connect it to the port generating the events
   	std::string remote_hand_port_name = "/icub/cartesianController/left_arm/state:o";
   	connectionOk = yarp.connect(remote_hand_port_name.c_str(), local_hand_port_name.c_str());
@@ -130,14 +128,14 @@ int main(int numArgs, char** args)
 
 ////////////////////////////////////////////////////////////////////////////////////
 	yarp::os::BufferedPort<yarp::os::Bottle> handEvents;
-
+	yarp::os::Bottle *handPosRight;
 
   	std::string local_hand_events_port_name = "/handReadEvents:i";
   	(handEvents).open(local_hand_events_port_name.c_str());
   	printf("Created port %s to get data from hand events!!\n\n", local_hand_events_port_name.c_str());
 
  // And we try to connect it to the port generating the events
-  	std::string remote_hand_events_port_name = "/icub/cartesianController/left_arm/events:o";
+  	std::string remote_hand_events_port_name = "/icub/cartesianController/left_arm/state:o";
   	connectionOk = yarp.connect(remote_hand_events_port_name.c_str(), local_hand_events_port_name.c_str());
 
   	printf("Waiting for hand port to go alive!!!  Check if robotInterface/iCubInterface and iKinCartesianSolver  is running! %d\n", connectionOk);	
@@ -161,10 +159,12 @@ int main(int numArgs, char** args)
 		image_hand_neurons.zero();
 		evBottle = dvs_port.read();
 		handPos = handPose.read();
+		handPosRight = handEvents.read();
 		
 		double handX = ((*handPos).get(0).asDouble()*100) + 35;
 		double handY = ((*handPos).get(1).asDouble()*100) + 35;	
-		double handZ = ((*handPos).get(2).asDouble()*100) + 35;
+		double handZ = ((*handPos).get(2).asDouble()*100) + 35;		
+		
 		
 		if ( ((*handPos).get(0).asDouble()*100) < minX)
 		{
@@ -262,7 +262,7 @@ int main(int numArgs, char** args)
 	    					ev_y = ev->getY();
 	    					pol = ev->getPolarity();
 	    					channel = ev->getChannel();
-            					fprintf(output_file, "%d\n", ((ev_x/4)*32+(ev_y/4))*(pol+1));
+            				//	fprintf(output_file, "%d\n", ((ev_x/4)*32+(ev_y/4))*(pol+1));
 	    					address_ev_found = true;
 	  				}
 				}
@@ -284,32 +284,46 @@ int main(int numArgs, char** args)
 				if(address_ev_found && ts_found){
 	  				if(ev_x>=0 && ev_x <= 127 && ev_y>=0 && ev_y <= 127 && channel ==0){ //
 
-						handIzhNeuronLeft.updatePotential((!movingLeft)*1000.0, ev_t);
-						handIzhNeuronRight.updatePotential((!movingRight)*1000.0, ev_t);
+					handPos = handPose.read();
+					handPosRight = handEvents.read();
+					output_file << 	(*handPos).get(0).asDouble() << " " << (*handPos).get(1).asDouble() << " " << (*handPos).get(2).asDouble() << " " << (*handPosRight).get(0).asDouble() << " " << (*handPosRight).get(1).asDouble() << " " << (*handPosRight).get(2).asDouble(); //  << " " << std::endl;
+	
+//fprintf(output_file, "%f %f %f %f %f %f", (*handPos).get(0).asDouble(), (*handPos).get(1).asDouble(), (*handPos).get(2).asDouble(), (*handPosRight).get(0).asDouble(), (*handPosRight).get(1).asDouble(), (*handPosRight).get(2).asDouble());
+						
+					handIzhNeuronLeft.updatePotential((!movingLeft)*1000.0, ev_t);
+					handIzhNeuronRight.updatePotential((!movingRight)*1000.0, ev_t);
+
+					output_file << " " << ev_x << " " << ev_y << " " << pol << " " << channel << " " << ev_t << std::endl; 
+					//	fprintf(output_file, " %d %d %d %d %f\n", ev_x, ev_y, pol, channel, ev_t);
 
 						printf("Arm Moving?? = %d : %f : %f : %f\n", !movingRight, exp(-(ev_t-handIzhNeuronRight.getLastSpikeTime())/150), (ev_t-handIzhNeuronRight.getLastSpikeTime()), rightHandWeights[ev_x*128+ev_y] );
 						if(!movingLeft)
 						{
-							leftHandWeights[ev_x*128+ev_y] = leftHandWeights[ev_x*128+ev_y] + 15*exp( -(ev_t-handIzhNeuronLeft.getLastSpikeTime() )/150);	
+							leftHandWeights[ev_x*128+ev_y] = leftHandWeights[ev_x*128+ev_y] + 50*( (exp(-(ev_t-handIzhNeuronLeft.getLastSpikeTime() )/150))>10000?0:exp(-(ev_t-handIzhNeuronLeft.getLastSpikeTime())/150) );						
 						}
 						else
 						{	
-							leftHandWeights[ev_x*128+ev_y] = leftHandWeights[ev_x*128+ev_y] - 7 + 10*exp( -(ev_t-handIzhNeuronLeft.getLastSpikeTime()-ev_t )/150);
+							leftHandWeights[ev_x*128+ev_y] = leftHandWeights[ev_x*128+ev_y] - 70 + 10*exp( -(ev_t-handIzhNeuronLeft.getLastSpikeTime()-ev_t )/150);
 						}
 
 						if(!movingRight)
 						{
-							rightHandWeights[ev_x*128+ev_y] = rightHandWeights[ev_x*128+ev_y] + 15*exp( -(ev_t-handIzhNeuronRight.getLastSpikeTime() )/150);	
+							rightHandWeights[ev_x*128+ev_y] = rightHandWeights[ev_x*128+ev_y] + 50*( (exp( -(ev_t-handIzhNeuronRight.getLastSpikeTime() )/150))>10000?0:exp(-(ev_t-handIzhNeuronRight.getLastSpikeTime())/150) );	
 						}
 						else
 						{	
-							rightHandWeights[ev_x*128+ev_y] = rightHandWeights[ev_x*128+ev_y] - 7 + 10*exp( -(ev_t-handIzhNeuronRight.getLastSpikeTime() )/150);	
+							rightHandWeights[ev_x*128+ev_y] = rightHandWeights[ev_x*128+ev_y] - 70 + 10*exp( -(ev_t-handIzhNeuronRight.getLastSpikeTime() )/150);	
 						}
 
 
 						image_hand_weights.pixel(ev_y, ev_x).r = (leftHandWeights[ev_x*128+ev_y]>0)?leftHandWeights[ev_x*128+ev_y]:0;
+//						double temp = image_hand_weights.pixel(ev_y, ev_x).r - image_hand_weights.pixel(ev_y, ev_x).b;
+//						image_hand_weights.pixel(ev_y, ev_x).r = temp;
 //						image_hand_weights.pixel(ev_y, ev_x).r = image_hand_weights.pixel(ev_y, ev_x).r - rightHandWeights[ev_x*128+ev_y];						
-						image_hand_weights.pixel(ev_y, ev_x).b = (rightHandWeights[ev_x*128+ev_y]>0)?rightHandWeights[ev_x*128+ev_y]:0;						
+						image_hand_weights.pixel(ev_y, ev_x).b = (rightHandWeights[ev_x*128+ev_y]>0)?rightHandWeights[ev_x*128+ev_y]:0;								
+//						temp = image_hand_weights.pixel(ev_y, ev_x).b - image_hand_weights.pixel(ev_y, ev_x).r;
+//						image_hand_weights.pixel(ev_y, ev_x).b = temp;
+
           				}
 	  				address_ev_found = false;
 	  				ts_found = false;
@@ -321,5 +335,5 @@ int main(int numArgs, char** args)
 			}
 		} image_hand_weights_port.write(image_hand_weights);
 	}
-	fclose(output_file);	
+	output_file.close(); //fclose(output_file);	
 }
