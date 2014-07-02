@@ -61,6 +61,7 @@ CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libY
 CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
 CMakeFiles/blobTracker.dir/eventBottle.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/NameStore.h
@@ -134,6 +135,7 @@ CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYA
 CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
 CMakeFiles/blobTracker.dir/eventCodec.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/NameStore.h
@@ -207,6 +209,7 @@ CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYAR
 CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/ManagedBytes.h
 CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/blobTracker.dir/iCubMotor.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
@@ -308,6 +311,7 @@ CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/
 CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Log.h
 CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/ManagedBytes.h
 CMakeFiles/blobTracker.dir/main.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
@@ -449,6 +453,7 @@ CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/lib
 CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/ManagedBytes.h
 CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/blobTracker.dir/tracker_pool.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
@@ -536,6 +541,7 @@ CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_O
 CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Event.h
 CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/IConfig.h
 CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LocalReader.h
+CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/LockGuard.h
 CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Module.h
 CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/Mutex.h
 CMakeFiles/blobTracker.dir/unmask.cpp.o: /usr/local/src/robot/yarp/src/libYARP_OS/include/yarp/os/NameStore.h

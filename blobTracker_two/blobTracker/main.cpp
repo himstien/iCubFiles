@@ -37,7 +37,7 @@ int main(int numArgs, char** args)
   double delete_thresh = 0.00000001;
   double alpha_rep = 2;
   int d_rep = 40;
-  int max_nb_trackers = 40;
+  int max_nb_trackers = 4;
   int nb_ev_reg = 50;
   double dist_thresh = 30;
   double vel_thresh = 50;
@@ -300,8 +300,8 @@ int main(int numArgs, char** args)
 			}
 			if (audioBottle->get(0).asInt()){
 	        	    printf("Mean x = %f, mean y = %f\n", mean_x, mean_y);
-				cubMotor->moveEyes(mean_x, mean_y);
-				Time::delay(5);
+	//			cubMotor->moveEyes(mean_x, mean_y);
+	//			Time::delay(5);
 //	cubMotor->moveHead(mean_x, mean_y);
 	        	}
 		}

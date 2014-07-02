@@ -140,7 +140,9 @@ void ICubMotor::run()
     head = new SimplePart;
     head->initialised = false;
     head->num_clients = 0;
-    leftLeg = new SimplePart;
+
+/*    
+	leftLeg = new SimplePart;
     leftLeg->initialised = false;
     leftLeg->num_clients = 0;
     rightLeg = new SimplePart;
@@ -155,11 +157,11 @@ void ICubMotor::run()
     rightArm = new SimplePart;
     rightArm->initialised = false;
     rightArm->num_clients = 0;
-
+*/
     initHead(simulationMode);
-    initleftLeg(simulationMode);
-    initrightLeg(simulationMode);
-    initTorso(simulationMode);
+//    initleftLeg(simulationMode);
+//    initrightLeg(simulationMode);
+//    initTorso(simulationMode);
     if (cartesianMode == true){
        initImpedance(simulationMode);
     }
