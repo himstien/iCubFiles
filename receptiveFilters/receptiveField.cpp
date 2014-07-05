@@ -1,6 +1,6 @@
 // Author: Himanshu Akolkar
 
-// Library for getting receptive fields and applying them on iCub with DVS input.
+// Code for getting receptive fields and applying them on iCub with DVS input.
 
 
 #include "receptiveField.h"
