@@ -1,8 +1,8 @@
-//#ifndef IZHIKEVICNEURON_H
-//#define IZHIKEVICNEURON_H
+#ifndef RECEPTIVEFIELD_H
+#define RECEPTIVEFIELD_H
 
 #include <yarp/os/all.h>
-#include <yarp/sig/vector.h>
+#include <yarp/sig/all.h>
 
 class receptiveField
 {
@@ -10,20 +10,20 @@ class receptiveField
         receptiveField();
         virtual ~receptiveField();
         
-        void setWeights(std::string, vector, int);
+        void setWeights(std::string, yarp::sig::Vector, int);
         bool setFieldSize(int);
 
-        yarp::os::vector getWeights();
-	    int getFieldSize();
+        yarp::sig::Vector getWeights();
+	int getFieldSize();
 	
     protected:
         double inhibitor;
 
     private:
         int size;
-	    yarp::os::vector weightVector;
+	    yarp::sig::Vector weightVector;
 };
 
-#endif // IZHIKEVICNEURON_H
+#endif // RECEPTIVEFIELD_H
 
 

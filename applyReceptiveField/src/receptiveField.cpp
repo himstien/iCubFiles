@@ -4,6 +4,7 @@
 
 
 #include "receptiveField.h"
+#include <fstream>
 
 using namespace yarp::os;
 
@@ -21,14 +22,14 @@ receptiveField::~receptiveField()
     //dtor
 }
 
-void receptiveField::setWeights(string filename, vector weightvector, int fieldSize)
+void receptiveField::setWeights(std::string filename, yarp::sig::Vector weightvector, int fieldSize)
 {
-	File fid;
-	fid.open(filename.c_str(), 'r');
+	std::ifstream fid;
+	fid.open(filename.c_str());
 	
 	for(int n=0; n < fieldSize*fieldSize; n++)
 	{
-		weightVector[n] = fscanf(fid, %d, 1);
+		fid >> weightVector[n];
 	}
 }
 

@@ -16,13 +16,15 @@ int main(int argc, char *argv[])
     neuron1.save2File(true);
 
     receptiveField rf1;
-    rf1.setWeights;
-        
-    for (int i=0; i < 10000000; i++)
+    
+for (int i = 0; i < 100; i++)
+{        
+    for (int j=0; j < 1000000; j++)
     {        
-        spiked = neuron1.updateNeuron(100, (unsigned int)time(0));
-        cout << spiked << " @ " << neuron1.getTimeStamp() << " " << neuron1.getPotential() << endl;
+        spiked = neuron1.updateNeuron(10*(i-1), (unsigned int)time(0));
+     //   cout << spiked << " @ " << neuron1.getTimeStamp() << " " << neuron1.getPotential() << endl;
     }
+}
     system("PAUSE");
     return EXIT_SUCCESS;
 }
