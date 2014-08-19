@@ -18,7 +18,7 @@ fieldSizeX = 32;
 fieldSizeY = 32;
 valid = true;
 weightVector.resize(fieldSizeX*fieldSizeY);
- 
+verbose = 2; 
  
     //ctor
 }
@@ -28,10 +28,20 @@ receptiveField::~receptiveField()
     //dtor
 }
  
+void receptiveField::setVerbose(int value)
+{
+    verbose = value;
+}
+
+
 bool receptiveField::setFieldSize(int x, int y)
 {
     fieldSizeX = x;
     fieldSizeY = y;
+    
+    if(verbose == 2)
+    std::cout << "[Receptive field:] receptive field size set to" << fieldSizeX << " by " << fieldSizeY << std::endl;
+    
     return true;   
 }
  
@@ -45,8 +55,12 @@ int receptiveField::getFieldSizeY()
     return fieldSizeY;
 }
  
- bool receptiveField::normalizeWeights()
- {
+bool receptiveField::normalizeWeights()
+{
+
+    if(verbose == 2)
+    std::cout << "[Receptive field:] Normalizing weights" << std::endl;
+
     double sum = 0;
     for(int n=0; n < fieldSizeX*fieldSizeY; n++)
     {
@@ -60,33 +74,64 @@ int receptiveField::getFieldSizeY()
     }
     return true;
      
- }
+}
  
- bool receptiveField::multiplyWeights( double factor)
- {
+bool receptiveField::multiplyWeights( double factor)
+{
+
+    if(verbose == 2)
+    std::cout << "[Receptive field:] multiplying weights by " << factor << std::endl;
+
      
     for(int n=0; n < fieldSizeX*fieldSizeY; n++)
     {
         weightVector[n] *= factor ;
     }
      
- }
+}
    
 bool receptiveField::isValid()
 {
+    if(verbose == 2)
+    std::cout << "[Receptive field:] Receptive field object validity is " << valid << std::endl;
+
     return valid;
 }
  
          
-void receptiveField::setWeights()
+bool receptiveField::setWeights()
 {
-    std::ifstream fid;
-    fid.open(weightsFile.c_str());
-     
+
+    if(verbose == 1)
+    {
+        std::cout << "[Receptive field:] Setting weights: " << std::endl;
+        std::cout << "                   Opening weight file " << weightsFile.c_str() << std::endl;
+    }
+
+    valid = fid.open(weightsFile.c_str());
+
+    if(verbose == 1)
+    {
+        if(valid)
+            std::cout << "[Receptive field:] Weights file opened succesfully" << std::endl;
+        else
+            {
+                std::cout << "[Receptive field:] Weights file could not be opened" << std::endl;
+                return false;
+            }
+    }
+
+    if(verbose == 1)
+    {
+        std::cout << "[Receptive field:] Writing to vector" << std::endl;
+    }
+    
     for(int n=0; n < fieldSizeX*fieldSizeY; n++)
     {
         fid >> weightVector[n];
     }
+    
+true return;
 }
  
 bool receptiveField::setWeightsFile(std::string filename)
@@ -102,6 +147,6 @@ double receptiveField::getWeightAt(int x, int y)
     {
         return -1.0;
     }  
-    return ( weightVector.at((x-1)*(fieldSizeX)+ y));
+    return ( weightVector[(x-1)*(fieldSizeX)+ y] );
 }
 

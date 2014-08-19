@@ -16,15 +16,26 @@ int main(int argc, char *argv[])
     neuron1.save2File(true);
 
     receptiveField rf1;
-    
-for (int i = 0; i < 100; i++)
-{        
-    for (int j=0; j < 1000000; j++)
-    {        
-        spiked = neuron1.updateNeuron(10*(i-1), (unsigned int)time(0));
-     //   cout << spiked << " @ " << neuron1.getTimeStamp() << " " << neuron1.getPotential() << endl;
+    if(rf1.isValid())
+    {
+        cout << "Created a valid receptive field" << endl;
     }
-}
+
+        
+    rf1.setWeightsFile("../testGaborFilter.txt");
+    rf1.setWeights();
+
+    cout << rf1.getWeightAt(10, 10) << endl;    
+        
+    
+    for (int i = 0; i < 100; i++)
+        {        
+        for (int j=0; j < 1000000; j++)
+            {        
+                spiked = neuron1.updateNeuron(10*(i-1), (unsigned int)time(0));
+     //   cout << spiked << " @ " << neuron1.getTimeStamp() << " " << neuron1.getPotential() << endl;
+            }
+        }
     system("PAUSE");
     return EXIT_SUCCESS;
 }

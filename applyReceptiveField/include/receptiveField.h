@@ -3,6 +3,7 @@
  
 #include <yarp/os/all.h>
 #include <yarp/sig/all.h>
+#include <fstream>
  
 class receptiveField
 {
@@ -18,14 +19,15 @@ class receptiveField
         int getFieldSizeY();
          
         double getWeightAt(int, int);
-        void setWeights();
+        bool setWeights();
          
         bool normalizeWeights();
-        bool multiplyWeights();
-        bool scaleUpWeights();
+        bool multiplyWeights(double);
+//        bool scaleUpWeights();
          
         bool isValid();
-     
+        bool setVerbose(int);
+
     protected:
         double inhibitor;
  
@@ -35,6 +37,9 @@ class receptiveField
         int fieldSizeY;
         yarp::sig::Vector weightVector;
         bool valid;
+        std::string weightsFile;
+        int verbose;
+        std::ifstream fid;
 };
  
 #endif // RECEPTIVEFIELD_H
