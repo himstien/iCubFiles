@@ -33,9 +33,9 @@ The plan is to interact as little as possible with Paul's code so I don't break 
 
 
 //some parameters for mapping the audio data file (M.S.T.)
-#define kFrameSizeToWrite_bytes 4096*4
+#define kFrameSizeToWrite_bytes 48000*4
 #define kNumChannels 2
-#define kNumSamples 4096
+#define kNumSamples 48000
 #define kSampleRate 48000 //this needs to be coordinated with the portaudio yarpdev!!
 #define kBytesPerSample 2
 #define kNumBytes kNumSamples*kNumChannels*kBytesPerSample
@@ -152,8 +152,8 @@ public:
           }
           }
         */
-        if (true) {
-            std::cout << " writing frame to file" << std::endl;
+        if (true) {            
+            std::cout << " Recieved data from grabber. Writing to bottle" << std::endl;
             putFrame2Yarp(sound);
         }
         mutex.post();

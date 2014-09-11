@@ -26,11 +26,10 @@ class receptiveField
 //        bool scaleUpWeights();
          
         bool isValid();
-        bool setVerbose(int);
+        void setVerbose(bool);
 
     protected:
-        double inhibitor;
- 
+        double inhibitor; 
  
     private:
         int fieldSizeX;

@@ -18,7 +18,7 @@ fieldSizeX = 32;
 fieldSizeY = 32;
 valid = true;
 weightVector.resize(fieldSizeX*fieldSizeY);
-verbose = 2; 
+verbose = 1; 
  
     //ctor
 }
@@ -28,7 +28,7 @@ receptiveField::~receptiveField()
     //dtor
 }
  
-void receptiveField::setVerbose(int value)
+void receptiveField::setVerbose(bool value)
 {
     verbose = value;
 }
@@ -102,26 +102,28 @@ bool receptiveField::isValid()
 bool receptiveField::setWeights()
 {
 
-    if(verbose == 1)
+    if(verbose >= 1)
     {
         std::cout << "[Receptive field:] Setting weights: " << std::endl;
         std::cout << "                   Opening weight file " << weightsFile.c_str() << std::endl;
     }
 
-    valid = fid.open(weightsFile.c_str());
+    fid.open(weightsFile.c_str());
 
-    if(verbose == 1)
+    valid = fid.is_open();
+
+    if(verbose >= 1)
     {
         if(valid)
             std::cout << "[Receptive field:] Weights file opened succesfully" << std::endl;
         else
             {
-                std::cout << "[Receptive field:] Weights file could not be opened" << std::endl;
+                std::cout << "[Receptive field:] Weights file could not be opened" << std::endl;                
                 return false;
             }
     }
 
-    if(verbose == 1)
+    if(verbose >= 1)
     {
         std::cout << "[Receptive field:] Writing to vector" << std::endl;
     }
@@ -131,7 +133,7 @@ bool receptiveField::setWeights()
         fid >> weightVector[n];
     }
     
-true return;
+return true;
 }
  
 bool receptiveField::setWeightsFile(std::string filename)
