@@ -32,6 +32,7 @@ neuronLIF::neuronLIF()
     
     if (save2file)
        saveFid.open(fileName.c_str());  
+
 // Debug ??
    debug = true;
 }
@@ -159,6 +160,22 @@ bool neuronLIF::updateNeuron(double curr)
            if(save2file) writeToFile();
            return false;
      }
+}
+
+void neuronLIF::setNeuronCenter(double u, double v)
+{
+     centerX = u;
+     centerY = v;
+}
+
+double neuronLIF::getCenterX()
+{
+        return centerX;
+}
+
+double neuronLIF::getCenterY()
+{
+        return centerY;
 }
 
 void neuronLIF::save2File(bool value)

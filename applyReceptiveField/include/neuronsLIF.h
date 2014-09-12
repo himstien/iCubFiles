@@ -15,6 +15,8 @@ class neuronLIF
              
              void setInputCurrent();
              bool setInputCurrent(double curr);
+
+             void setNeuronCenter(double u, double v);
              
              bool setThresholdPotential(double thershold);
              double getPotential();
@@ -26,12 +28,19 @@ class neuronLIF
              void setDebug(bool);
              
              bool setNeuronId(std::string);
+
+             double getCenterX();
+             double getCenterY();
+
              
       private:
               // Init neuron related variables
               double restingPotential;
 	          double potential;
 	          double thresholdPotential;
+              double centerX;
+              double centerY;
+
               
               unsigned int lastTimeStamp;
 	          unsigned int lastUpdateTime;

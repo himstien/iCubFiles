@@ -28,12 +28,16 @@ class receptiveField
         bool isValid();
         void setVerbose(bool);
 
+        double getCenterX();
+        double getCenterY();    
+
     protected:
         double inhibitor; 
  
     private:
         int fieldSizeX;
         int fieldSizeY;
+    
         yarp::sig::Vector weightVector;
         bool valid;
         std::string weightsFile;

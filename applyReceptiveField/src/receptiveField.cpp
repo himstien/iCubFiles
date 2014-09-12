@@ -145,7 +145,7 @@ bool receptiveField::setWeightsFile(std::string filename)
  
 double receptiveField::getWeightAt(int x, int y)
 {
-    if(x > fieldSizeX || y > fieldSizeY)
+    if(x < 0 || y < 0 || x > fieldSizeX || y > fieldSizeY)
     {
         return -1.0;
     }  
