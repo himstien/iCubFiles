@@ -14,14 +14,11 @@ yarpDefault::yarpDefault()
 
     imageToWrite.resize(128, 128);
 
-    for (int i=0; i < 128; i++)
+    for (int i=0; i < 127; i++)
     {
-            for (int j=0; j < 128; j++)    
+            for (int j=0; j < 127; j++)    
             {
-                PixelRgb& pixel = imageToWrite.pixel(i, j);
-                pixel.r = 0.5;
-                pixel.g = 0.5;
-                pixel.b = 0.5;
+                imageToWrite.pixel(i, j) = 127;
             }
     }
 

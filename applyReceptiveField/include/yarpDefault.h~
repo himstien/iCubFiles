@@ -13,9 +13,8 @@ class yarpDefault
     public:
         yarpDefault();
         ~yarpDefault();
-  
-      yarp::os::BufferedPort<yarp::os::Bottle> inputPort;    
-        yarp::sig::ImageOf<yarp::sig::PixelRgb> imageToWrite;
+        yarp::os::BufferedPort<yarp::os::Bottle> inputPort;    
+        yarp::sig::ImageOf<yarp::sig::PixelInt> imageToWrite;
         
         yarp::os::Port imagePort;    
         

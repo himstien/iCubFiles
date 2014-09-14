@@ -17,7 +17,7 @@ neuronLIF::neuronLIF()
 	totalSpikes = 0;
 	initTimeStamp = 0;
 //	inputCurrent = 0;
-	membraneTimeConstant = 1;
+	membraneTimeConstant = 1000;
 	
 	setInputCurrent();
 // Init display parameters
@@ -37,10 +37,46 @@ neuronLIF::neuronLIF()
    debug = true;
 }
 
+neuronLIF::neuronLIF(neuronLIF& n)
+{
+    potential = n.potential;
+    restingPotential = n.restingPotential;	          
+	n.thresholdPotential = n.thresholdPotential;
+    n.centerX = n.centerX;
+    n.centerY = n.centerY;
+
+              
+    n.lastTimeStamp = n.lastTimeStamp;
+	n.lastUpdateTime = n.lastUpdateTime;
+	n.timeFromLastSpike = n.timeFromLastSpike;
+    n.totalSpikes = n.totalSpikes;
+    n.initTimeStamp = n.initTimeStamp;
+	n.inputCurrent = n.inputCurrent;
+	n.membraneTimeConstant = n.membraneTimeConstant;
+              // Init display parameters
+	n.display = n.display;
+	          // Init file save parameters	
+    n.updated = n.updated;
+                //n.save2file = this->save2file;
+    n.fileName = n.fileName;              
+    n.neuronId = n.neuronId;
+              
+    n.debug = n.debug;
+                //n.saveFid = this->saveFid;
+  
+};
+
+
 neuronLIF::~neuronLIF()
 {
        saveFid.close();                
 }
+
+//neuronLIF neuronLIF::operator=(neuronLIF& n)
+//{
+
+//        n.restingPotential = this->restingPotential;
+//}
 
 bool neuronLIF::updateNeuron()
 {
@@ -135,16 +171,19 @@ bool neuronLIF::updateNeuron(double curr, double delT)
 
 bool neuronLIF::updateNeuron(double curr)
 {
+
      if (debug)
           std::cout << "[neuron LIF]: Update neurons with current: " << curr << std::endl;
 
      if (curr <= 0)
      {
+              potential = potential*exp(-1/membraneTimeConstant);
               return false;
      }
      
-     potential = potential*exp(-0.01/membraneTimeConstant) + curr;
+     potential = potential*exp(-1/membraneTimeConstant) + curr;
      lastUpdateTime = time(0);
+
      if (debug)
         std::cout << "[neuron LIF]: Update potential of neuron to " << potential << std::endl; 
      
@@ -160,6 +199,7 @@ bool neuronLIF::updateNeuron(double curr)
            if(save2file) writeToFile();
            return false;
      }
+     
 }
 
 void neuronLIF::setNeuronCenter(double u, double v)

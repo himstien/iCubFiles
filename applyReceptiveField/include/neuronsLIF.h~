@@ -7,7 +7,7 @@ class neuronLIF
       public:
              neuronLIF();
              virtual ~neuronLIF();
-             neuronLIF(neuronLIF&);
+             neuronLIF(const neuronLIF&);
 
              bool updateNeuron(double curr);
              bool updateNeuron(double curr, double delT);
