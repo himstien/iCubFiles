@@ -10,14 +10,14 @@ neuronLIF::neuronLIF()
 // Init neuron related variables
 	restingPotential = 0;
 	potential = restingPotential;
-	thresholdPotential = 1000;
+	thresholdPotential = 10;
 	lastTimeStamp = 0;
 	lastUpdateTime = 0;
 	timeFromLastSpike = 0;
 	totalSpikes = 0;
 	initTimeStamp = 0;
 //	inputCurrent = 0;
-	membraneTimeConstant = 1000;
+	membraneTimeConstant = 500;
 	
 	setInputCurrent();
 // Init display parameters
@@ -147,7 +147,7 @@ bool neuronLIF::updateNeuron(double curr, double delT)
      if (curr <= 0)
      {
               lastUpdateTime = lastUpdateTime + (unsigned int)delT;
-              return true;
+              return false;
      }
      
      

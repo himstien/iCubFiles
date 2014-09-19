@@ -147,7 +147,7 @@ double receptiveField::getWeightAt(int x, int y)
 {
     if(x < 0 || y < 0 || x > fieldSizeX || y > fieldSizeY)
     {
-        return -1.0;
+        return 0.0;
     }  
     return ( weightVector[(x-1)*(fieldSizeX)+ y] );
 }

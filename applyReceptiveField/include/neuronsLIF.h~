@@ -7,7 +7,7 @@ class neuronLIF
       public:
              neuronLIF();
              virtual ~neuronLIF();
-             neuronLIF(const neuronLIF&);
+             neuronLIF(neuronLIF&);
 
              bool updateNeuron(double curr);
              bool updateNeuron(double curr, double delT);
@@ -29,6 +29,7 @@ class neuronLIF
              void setDebug(bool);
              
              bool setNeuronId(std::string);
+             std::string getNeuronId(){return neuronId};
 
              double getCenterX();
              double getCenterY();

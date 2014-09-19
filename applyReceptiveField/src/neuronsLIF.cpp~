@@ -17,7 +17,7 @@ neuronLIF::neuronLIF()
 	totalSpikes = 0;
 	initTimeStamp = 0;
 //	inputCurrent = 0;
-	membraneTimeConstant = 1000;
+	membraneTimeConstant = 500;
 	
 	setInputCurrent();
 // Init display parameters
@@ -37,7 +37,7 @@ neuronLIF::neuronLIF()
    debug = true;
 }
 
-neuronLIF::neuronLIF(const neuronLIF& n)
+neuronLIF::neuronLIF(neuronLIF& n)
 {
     potential = n.potential;
     restingPotential = n.restingPotential;	          
@@ -147,7 +147,7 @@ bool neuronLIF::updateNeuron(double curr, double delT)
      if (curr <= 0)
      {
               lastUpdateTime = lastUpdateTime + (unsigned int)delT;
-              return true;
+              return false;
      }
      
      
