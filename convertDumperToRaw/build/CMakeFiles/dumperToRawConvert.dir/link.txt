@@ -1,1 +1,0 @@
-/usr/bin/c++   -g    CMakeFiles/dumperToRawConvert.dir/src/dumperToRaw.cpp.o CMakeFiles/dumperToRawConvert.dir/src/main.cpp.o  -o dumperToRawConvert -rdynamic -leMorphLib 
