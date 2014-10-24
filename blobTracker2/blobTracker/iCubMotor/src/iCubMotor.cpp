@@ -140,26 +140,26 @@ void ICubMotor::run()
     head = new SimplePart;
     head->initialised = false;
     head->num_clients = 0;
-    leftLeg = new SimplePart;
-    leftLeg->initialised = false;
-    leftLeg->num_clients = 0;
-    rightLeg = new SimplePart;
-    rightLeg->initialised = false;
-    rightLeg->num_clients = 0;
-    torso = new SimplePart;
-    torso->initialised = false;
-    torso->num_clients = 0;
-    leftArm = new SimplePart;
-    leftArm->initialised = false;
-    leftArm->num_clients = 0;
-    rightArm = new SimplePart;
-    rightArm->initialised = false;
-    rightArm->num_clients = 0;
+   // leftLeg = new SimplePart;
+   // leftLeg->initialised = false;
+   // leftLeg->num_clients = 0;
+   // rightLeg = new SimplePart;
+   // rightLeg->initialised = false;
+   // rightLeg->num_clients = 0;
+   // torso = new SimplePart;
+   // torso->initialised = false;
+   // torso->num_clients = 0;
+   // leftArm = new SimplePart;
+   // leftArm->initialised = false;
+   // leftArm->num_clients = 0;
+   // rightArm = new SimplePart;
+   // rightArm->initialised = false;
+   // rightArm->num_clients = 0;
 
     initHead(simulationMode);
-    initleftLeg(simulationMode);
-    initrightLeg(simulationMode);
-    initTorso(simulationMode);
+    //initleftLeg(simulationMode);
+    //initrightLeg(simulationMode);
+    //initTorso(simulationMode);
     if (cartesianMode == true){
        initImpedance(simulationMode);
     }
@@ -225,9 +225,9 @@ void ICubMotor::run()
     }
 
     closeHead();
-    closeLeftLeg();
-    closeRightLeg();
-    closeTorso();
+   // closeLeftLeg();
+   // closeRightLeg();
+   // closeTorso();
 
     if (cartesianMode == true){
        closeImpedance();
