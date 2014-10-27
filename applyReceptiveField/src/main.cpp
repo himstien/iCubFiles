@@ -73,40 +73,81 @@ receptiveFields.push_back(&rf1);
 
 receptiveField rf2;
 weightsFile = "./curvedRFs/curvedRF2.txt" ;
-rf1.setWeightsFile(weightsFile.c_str());
-rf1.setWeights();
+rf2.setWeightsFile(weightsFile.c_str());
+rf2.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf2);
 
 
 receptiveField rf3;
 weightsFile = "./curvedRFs/curvedRF3.txt" ;
-rf1.setWeightsFile(weightsFile.c_str());
-rf1.setWeights();
+rf3.setWeightsFile(weightsFile.c_str());
+rf3.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf3);
 
 receptiveField rf4;
 weightsFile = "./curvedRFs/curvedRF4.txt" ;
-rf1.setWeightsFile(weightsFile.c_str());
-rf1.setWeights();
+rf4.setWeightsFile(weightsFile.c_str());
+rf4.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf4);
 
 receptiveField rf5;
 weightsFile = "./curvedRFs/curvedRF5.txt" ;
-rf1.setWeightsFile(weightsFile.c_str());
-rf1.setWeights();
+rf5.setWeightsFile(weightsFile.c_str());
+rf5.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf5);
 
 receptiveField rf6;
 weightsFile = "./curvedRFs/curvedRF6.txt" ;
-rf1.setWeightsFile(weightsFile.c_str());
-rf1.setWeights();
+rf6.setWeightsFile(weightsFile.c_str());
+rf6.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf6);
 
+receptiveField rf7;
+weightsFile = "./curvedRFs/curvedRF7.txt" ;
+rf7.setWeightsFile(weightsFile.c_str());
+rf7.setWeights();
+//        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
+receptiveFields.push_back(&rf7);
+
+receptiveField rf8;
+weightsFile = "./curvedRFs/curvedRF8.txt" ;
+rf8.setWeightsFile(weightsFile.c_str());
+rf8.setWeights();
+//        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
+receptiveFields.push_back(&rf8);
+
+receptiveField rf9;
+weightsFile = "./curvedRFs/curvedRF9.txt" ;
+rf9.setWeightsFile(weightsFile.c_str());
+rf9.setWeights();
+//        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
+receptiveFields.push_back(&rf9);
+
+receptiveField rf10;
+weightsFile = "./curvedRFs/curvedRF10.txt" ;
+rf10.setWeightsFile(weightsFile.c_str());
+rf10.setWeights();
+//        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
+receptiveFields.push_back(&rf10);
+
+receptiveField rf11;
+weightsFile = "./curvedRFs/curvedRF11.txt" ;
+rf11.setWeightsFile(weightsFile.c_str());
+rf11.setWeights();
+//        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
+receptiveFields.push_back(&rf11);
+
+receptiveField rf12;
+weightsFile = "./curvedRFs/curvedRF12.txt" ;
+rf12.setWeightsFile(weightsFile.c_str());
+rf12.setWeights();
+//        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
+receptiveFields.push_back(&rf12);
 
 
 
@@ -121,39 +162,81 @@ neuron1.setNeuronCenter(X, Y);
 neurons.push_back(&neuron1); 
 
 neuronLIF neuron2;
-neuron1.setNeuronId("neuron2");
-neuron1.setDebug(false);
-neuron1.save2File(false);
-neuron1.setNeuronCenter(X, Y);
+neuron2.setNeuronId("neuron2");
+neuron2.setDebug(false);
+neuron2.save2File(false);
+neuron2.setNeuronCenter(X, Y);
 neurons.push_back(&neuron2); 
 
 neuronLIF neuron3;
-neuron1.setNeuronId("neuron3");
-neuron1.setDebug(false);
-neuron1.save2File(false);
-neuron1.setNeuronCenter(X, Y);
+neuron3.setNeuronId("neuron3");
+neuron3.setDebug(false);
+neuron3.save2File(false);
+neuron3.setNeuronCenter(X, Y);
 neurons.push_back(&neuron3); 
 
 neuronLIF neuron4;
-neuron1.setNeuronId("neuron4");
-neuron1.setDebug(false);
-neuron1.save2File(false);
-neuron1.setNeuronCenter(X, Y);
+neuron4.setNeuronId("neuron4");
+neuron4.setDebug(false);
+neuron4.save2File(false);
+neuron4.setNeuronCenter(X, Y);
 neurons.push_back(&neuron4); 
 
 neuronLIF neuron5;
-neuron1.setNeuronId("neuron5");
-neuron1.setDebug(false);
-neuron1.save2File(false);
-neuron1.setNeuronCenter(X, Y);
+neuron5.setNeuronId("neuron5");
+neuron5.setDebug(false);
+neuron5.save2File(false);
+neuron5.setNeuronCenter(X, Y);
 neurons.push_back(&neuron5); 
 
 neuronLIF neuron6;
-neuron1.setNeuronId("neuron6");
-neuron1.setDebug(false);
-neuron1.save2File(false);
-neuron1.setNeuronCenter(X, Y);
+neuron6.setNeuronId("neuron6");
+neuron6.setDebug(false);
+neuron6.save2File(false);
+neuron6.setNeuronCenter(X, Y);
 neurons.push_back(&neuron6); 
+
+neuronLIF neuron7;
+neuron7.setNeuronId("neuron7");
+neuron7.setDebug(false);
+neuron7.save2File(false);
+neuron7.setNeuronCenter(X, Y);
+neurons.push_back(&neuron7); 
+
+neuronLIF neuron8;
+neuron8.setNeuronId("neuron8");
+neuron8.setDebug(false);
+neuron8.save2File(false);
+neuron8.setNeuronCenter(X, Y);
+neurons.push_back(&neuron8); 
+
+neuronLIF neuron9;
+neuron9.setNeuronId("neuron9");
+neuron9.setDebug(false);
+neuron9.save2File(false);
+neuron9.setNeuronCenter(X, Y);
+neurons.push_back(&neuron9); 
+
+neuronLIF neuron10;
+neuron10.setNeuronId("neuron10");
+neuron10.setDebug(false);
+neuron10.save2File(false);
+neuron10.setNeuronCenter(X, Y);
+neurons.push_back(&neuron10); 
+
+neuronLIF neuron11;
+neuron11.setNeuronId("neuron11");
+neuron11.setDebug(false);
+neuron11.save2File(false);
+neuron11.setNeuronCenter(X, Y);
+neurons.push_back(&neuron11); 
+
+neuronLIF neuron12;
+neuron12.setNeuronId("neuron12");
+neuron12.setDebug(false);
+neuron12.save2File(false);
+neuron12.setNeuronCenter(X, Y);
+neurons.push_back(&neuron12); 
 
 
 numNeurons = neurons.size();
@@ -169,13 +252,9 @@ numNeurons = neurons.size();
 
     
 //    rf1.multiplyWeights(0.5);
-    
-    receptiveField *rField = receptiveFields.at(0);
+    while(run)
+    {        
 
-    if(rField->isValid())
-    {
-        while(run)
-        {        
               //  cout << "Reading from port" << endl;
                 tempData = network.inputPort.read();
               //  cout << "Read from port" << endl;
@@ -186,37 +265,38 @@ numNeurons = neurons.size();
                 size = mn->size();
                 double currentToUpdate = 0;
                 //cout << size << endl;                
+                
+                vector <double> potentials;
+                potentials.resize(numNeurons);
+                double maxPotential = 0.5;
+                int indexMax = -1;
 
-                for (int s = 0; s < size; s++)
+                for (int rfUpdate = 0; rfUpdate < numNeurons; rfUpdate++)
                 {
+                    receptiveField *rField = receptiveFields.at(rfUpdate);
+                    neuronLIF *neuron = neurons.at(rfUpdate);                  
 
-                    Bottle *cur = mn->get(s).asList(); //get each sublist  
-                    //create timestamp       
-                    //TimeStamp ts;
-                    //ts.setStamp(cur->find("time").asDouble());
-                    
-                    string type = cur->find("type").asString().c_str(); //for each sublist get type
-                    int X = cur->find("posX").asInt();
-                    int Y = cur->find("posY").asInt();
-                    int pol = cur->find("polarity").asInt();
-                    int channel = cur->find("channel").asInt();
-            
 
-                    Bottle &outB = network.outputNeuronStatePort.prepare();
-                    outB.clear();
-                    
-
-                    for (int numNrn = 0; numNrn < numNeurons; numNrn++)
+                    for (int s = 0; s < size; s++)
                     {
 
-                        neuronLIF *neuron = neurons.at(numNrn);                  
-                        outB.addDouble(neuron->getPotential());
+                        Bottle *cur = mn->get(s).asList(); //get each sublist  
 
-                    //    cout << neuron->getPotential() << endl;
+                        string type = cur->find("type").asString().c_str(); //for each sublist get type
+                        int X = cur->find("posX").asInt();
+                        int Y = cur->find("posY").asInt();
+                        int pol = cur->find("polarity").asInt();
+                        int channel = cur->find("channel").asInt();
+            
+
+                        Bottle &outB = network.outputNeuronStatePort.prepare();
+                        outB.clear();
+                    
+                        outB.addDouble(neuron->getPotential());
 
                         if(verbose)
                         {
-                            cout << "[main]: Updating neuron: " << numNrn << " from total " << numNeurons << "." << endl;
+                            cout << "[main]: Updating neuron: " << rfUpdate << " from total " << numNeurons << "." << endl;
                             cout << "[main]: Updating neuron with ID: " << neuron->getNeuronId() << endl;
                         }
                        
@@ -226,72 +306,79 @@ numNeurons = neurons.size();
                             double toUpdateX = neuron->getCenterX() - X + 16;
                             double toUpdateY = neuron->getCenterY() - Y + 16;
 
-//                            cout << X << " " << Y << " " << neuron->getCenterX() << " " << neuron->getCenterY() << " " << toUpdateX << " " << toUpdateY << endl;
                             if(toUpdateY < 16)
                                 currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY+16);
                             else
                                 currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY-16);
 
 
-                            neuron->updateNeuron(currentToUpdate);
-                            
+                            neuron->updateNeuron(currentToUpdate);                            
 // /*
-
-                            for (int x = 0; x < 32; x++)
-                            {
-                                for (int y = 0; y < 32; y++) 
-                                {
-                                  yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(neuron->getCenterY()-16+x, neuron->getCenterX()-16+y);
-                                  //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
-                                  if (y < 16)
-                                  {
-                                    pixel.r = 127+100*neuron->getPotential()*(rField->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                    pixel.g = 127+100*neuron->getPotential()*(rField->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                    pixel.b = 127+100*neuron->getPotential()*(rField->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y))); 
-                                  }
-                                  else
-                                  {
-                                    pixel.r = 127+100*neuron->getPotential()*(rField->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                    pixel.g = 127+100*neuron->getPotential()*(rField->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                    pixel.b = 127+100*neuron->getPotential()*(rField->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y))); 
-                                  }
-                                }   
-                            }
-// */
-                            
-  //                      network.imageToWrite.pixel(X, Y) = network.imageToWrite.pixel(X, Y) + 17*rf1.getWeightAt(toUpdateX, toUpdateY);
-
-//                        if (network.imageToWrite.pixel(X, Y) < 0 )
-//                        {
-//                            network.imageToWrite.pixel(X, Y) = 0;
-//                        }
+                            potentials.at(rfUpdate) = neuron->getPotential();                            
                         }
-                        
                     }
-                    if(network.outputNeuronStatePort.getOutputCount())
-                        network.outputNeuronStatePort.write();
+//                    cout << potentials.at(rfUpdate) << endl;
+                    if(potentials.at(rfUpdate) > maxPotential)
+                    {                        
+                        indexMax = rfUpdate;
+                        maxPotential = potentials.at(rfUpdate);
+                    }
+                    cout << maxPotential << endl;
+                }
+                
+                if(indexMax > -1)
+                {
+                    receptiveField *rfToShow = receptiveFields.at(indexMax);
+                    for (int x = 0; x < 32; x++)
+                    {
+                        for (int y = 0; y < 32; y++) 
+                        {
+                            yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
+                                      //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
+                            if (y < 16)
+                            {
+                                pixel.r = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                pixel.g = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                pixel.b = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y))); 
+                            }
+                            else
+                            {
+                                pixel.r = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                pixel.g = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                pixel.b = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));  
+                            }
+                        }   
+                    }
 
-                   // cout << endl;
+                }
+                else
+                {
+                    for (int x = 0; x < 32; x++)
+                    {
+                        for (int y = 0; y < 32; y++) 
+                        {
+                            yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
+                                      //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
+                            pixel.r = 0; 
+                            pixel.g = 0; 
+                            pixel.b = 0; 
+                        }   
+                    }
+
                 }
 
-                    
-//                network.imageToWrite.pixel(64, 64) = 60*neuron1.getPotential();
+// *    /
+
+                if(network.outputNeuronStatePort.getOutputCount())
+                        network.outputNeuronStatePort.write();
+
+                  
+                network.imagePort.write(network.imageToWrite);
 
 
-
-               
-
-//                        if (network.imageToWrite.pixel(X, Y) < 0 )
-//                        {
-//                            network.imageToWrite.pixel(X, Y) = 0;
-//                        }
-
-            network.imagePort.write(network.imageToWrite);
-
-
-        }
-        system("PAUSE");
-    }
+       } 
+    //    system("PAUSE");
+    
     return EXIT_SUCCESS;
 }
 
