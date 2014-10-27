@@ -22,6 +22,23 @@ verbose = 1;
  
     //ctor
 }
+
+receptiveField::receptiveField(std::string weightFile)
+{
+ 
+// Initializing with parameters for a typical pyramidal cell
+//size = 32;
+fieldSizeX = 32;
+fieldSizeY = 32;
+valid = true;
+weightVector.resize(fieldSizeX*fieldSizeY);
+verbose = 1; 
+setWeightsFile(weightFile.c_str());
+setWeights();
+ 
+    //ctor
+}
+
  
 receptiveField::~receptiveField()
 {
@@ -149,6 +166,6 @@ double receptiveField::getWeightAt(int x, int y)
     {
         return 0.0;
     }  
-    return ( weightVector[(y-1)*(fieldSizeX)+ x] );
+    return (weightVector[(x-1)*(fieldSizeY)+ y] );
 }
 

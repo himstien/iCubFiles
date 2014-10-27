@@ -9,6 +9,7 @@ class receptiveField
 {
     public:
         receptiveField();
+        receptiveField(std::string);
         virtual ~receptiveField();
          
         bool setFieldSize(int, int);
@@ -37,9 +38,6 @@ class receptiveField
     private:
         int fieldSizeX;
         int fieldSizeY;
-
-        double centerX;
-        double centerY;
     
         yarp::sig::Vector weightVector;
         bool valid;

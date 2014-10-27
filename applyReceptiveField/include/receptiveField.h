@@ -9,6 +9,7 @@ class receptiveField
 {
     public:
         receptiveField();
+        receptiveField(std::string);
         virtual ~receptiveField();
          
         bool setFieldSize(int, int);
