@@ -1,0 +1,164 @@
+<application>
+<name>Visual column at one pixel</name>
+
+<dependencies>	
+</dependencies>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort1 --imagePort /image1 --X 16 --Y 16</parameters>
+   <node>localhost</node>
+   <tag>visualColumn1</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort2 --imagePort /image2 --X 48 --Y 16</parameters>
+   <node>localhost</node>
+   <tag>visualColumn2</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort3 --imagePort /image3 --X 80 --Y 16</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort4 --imagePort /image4 --X 112 --Y 16</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort5 --imagePort /image5 --X 16 --Y 48</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort6 --imagePort /image6 --X 48 --Y 48</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort7 --imagePort /image7 --X 80 --Y 48</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort8 --imagePort /image8 --X 112 --Y 48</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort9 --imagePort /image9 --X 16 --Y 80</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort10 --imagePort /image10 --X 48 --Y 80</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort11 --imagePort /image11 --X 80 --Y 80</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort12 --imagePort /image12 --X 112 --Y 80</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+
+
+<module>
+   <name>yarpview</name>
+   <parameters>--name /outputImage --synch </parameters>
+   <node>localhost</node>
+   <tag>eventViewerLeft</tag>
+</module>
+
+
+
+<connection>
+  <from>/image1</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image2</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image3</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image4</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image5</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image6</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image7</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image8</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image9</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image10</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image11</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image12</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+
+
+</application>

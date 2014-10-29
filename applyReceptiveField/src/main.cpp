@@ -65,14 +65,14 @@ string weightsFile;
 //    receptiveFields.resize(24);
 
 receptiveField rf1;
-weightsFile = "./curvedRFs/curvedRF1.txt" ;
+weightsFile = "./curvedRFs/cRF1.txt" ;
 rf1.setWeightsFile(weightsFile.c_str());
 rf1.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf1);
 
 receptiveField rf2;
-weightsFile = "./curvedRFs/curvedRF2.txt" ;
+weightsFile = "./curvedRFs/cRF2.txt" ;
 rf2.setWeightsFile(weightsFile.c_str());
 rf2.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
@@ -80,70 +80,70 @@ receptiveFields.push_back(&rf2);
 
 
 receptiveField rf3;
-weightsFile = "./curvedRFs/curvedRF3.txt" ;
+weightsFile = "./curvedRFs/cRF3.txt" ;
 rf3.setWeightsFile(weightsFile.c_str());
 rf3.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf3);
 
 receptiveField rf4;
-weightsFile = "./curvedRFs/curvedRF4.txt" ;
+weightsFile = "./curvedRFs/cRF4.txt" ;
 rf4.setWeightsFile(weightsFile.c_str());
 rf4.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf4);
 
 receptiveField rf5;
-weightsFile = "./curvedRFs/curvedRF5.txt" ;
+weightsFile = "./curvedRFs/cRF5.txt" ;
 rf5.setWeightsFile(weightsFile.c_str());
 rf5.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf5);
 
 receptiveField rf6;
-weightsFile = "./curvedRFs/curvedRF6.txt" ;
+weightsFile = "./curvedRFs/cRF6.txt" ;
 rf6.setWeightsFile(weightsFile.c_str());
 rf6.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf6);
 
 receptiveField rf7;
-weightsFile = "./curvedRFs/curvedRF7.txt" ;
+weightsFile = "./curvedRFs/cRF7.txt" ;
 rf7.setWeightsFile(weightsFile.c_str());
 rf7.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf7);
 
 receptiveField rf8;
-weightsFile = "./curvedRFs/curvedRF8.txt" ;
+weightsFile = "./curvedRFs/cRF8.txt" ;
 rf8.setWeightsFile(weightsFile.c_str());
 rf8.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf8);
 
 receptiveField rf9;
-weightsFile = "./curvedRFs/curvedRF9.txt" ;
+weightsFile = "./curvedRFs/cRF9.txt" ;
 rf9.setWeightsFile(weightsFile.c_str());
 rf9.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf9);
 
 receptiveField rf10;
-weightsFile = "./curvedRFs/curvedRF10.txt" ;
+weightsFile = "./curvedRFs/cRF10.txt" ;
 rf10.setWeightsFile(weightsFile.c_str());
 rf10.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf10);
 
 receptiveField rf11;
-weightsFile = "./curvedRFs/curvedRF11.txt" ;
+weightsFile = "./curvedRFs/cRF11.txt" ;
 rf11.setWeightsFile(weightsFile.c_str());
 rf11.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf11);
 
 receptiveField rf12;
-weightsFile = "./curvedRFs/curvedRF12.txt" ;
+weightsFile = "./curvedRFs/cRF12.txt" ;
 rf12.setWeightsFile(weightsFile.c_str());
 rf12.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
@@ -268,7 +268,7 @@ numNeurons = neurons.size();
                 
                 vector <double> potentials;
                 potentials.resize(numNeurons);
-                double maxPotential = 0.5;
+                double maxPotential = 10;
                 int indexMax = -1;
 
                 for (int rfUpdate = 0; rfUpdate < numNeurons; rfUpdate++)
@@ -305,11 +305,13 @@ numNeurons = neurons.size();
 
                             double toUpdateX = neuron->getCenterX() - X + 16;
                             double toUpdateY = neuron->getCenterY() - Y + 16;
+                                
+                            currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY+16);
 
-                            if(toUpdateY < 16)
-                                currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY+16);
-                            else
-                                currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY-16);
+//                            if(toUpdateY < 16)
+//                                currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY+16);
+//                            else
+//                                currentToUpdate = currentToUpdate+rField->getWeightAt(toUpdateX, toUpdateY-16);
 
 
                             neuron->updateNeuron(currentToUpdate);                            
@@ -323,7 +325,7 @@ numNeurons = neurons.size();
                         indexMax = rfUpdate;
                         maxPotential = potentials.at(rfUpdate);
                     }
-                    cout << maxPotential << endl;
+
                 }
                 
                 if(indexMax > -1)
@@ -335,18 +337,23 @@ numNeurons = neurons.size();
                         {
                             yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
                                       //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
-                            if (y < 16)
-                            {
-                                pixel.r = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                pixel.g = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                pixel.b = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y))); 
-                            }
-                            else
-                            {
-                                pixel.r = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                pixel.g = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-                                pixel.b = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));  
-                            }
+
+                                pixel.r = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                pixel.g = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                pixel.b = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y))); 
+
+                         //   if (y < 16)
+                         //   {
+                         //       pixel.r = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                         //       pixel.g = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                         //       pixel.b = 127+100*(rfToShow->getWeightAt(x,y+16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y))); 
+                         //   }
+                         //   else
+                         //   {
+                         //       pixel.r = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                         //       pixel.g = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                         //       pixel.b = 127+100*(rfToShow->getWeightAt(x,y-16)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));  
+                         //   }
                         }   
                     }
 

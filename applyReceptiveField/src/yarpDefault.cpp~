@@ -11,7 +11,7 @@ yarpDefault::yarpDefault()
 
     inputPort.open("/inputEvents");   
 
-    std::cout << "Connecting to input port " << yarp.connect("/eventBottleConverter/etb:o", "/inputEvents") << std::endl;
+    std::cout << "Connecting to input port " << yarp.connect("/eventBottlePlayer/etb:o", "/inputEvents") << std::endl;
     
     
     imageToWrite.resize(128, 128);
@@ -38,7 +38,7 @@ yarpDefault::yarpDefault(std::string inputPortName, std::string imagePortName, s
 
     inputPort.open(inputPortName.c_str());   
 
-    std::cout << "Connecting to input port " << yarp.connect("/eventBottleConverter/etb:o", inputPortName.c_str()) << std::endl;
+    std::cout << "Connecting to input port " << yarp.connect("/eventBottlePlayer/etb:o", inputPortName.c_str()) << std::endl;
 
     imageToWrite.resize(128, 128);
 

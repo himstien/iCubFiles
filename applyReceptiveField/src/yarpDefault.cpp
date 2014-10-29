@@ -38,7 +38,7 @@ yarpDefault::yarpDefault(std::string inputPortName, std::string imagePortName, s
 
     inputPort.open(inputPortName.c_str());   
 
-    std::cout << "Connecting to input port " << yarp.connect("/eventBottlePlayer/etb:o", inputPortName.c_str()) << std::endl;
+    std::cout << "Connecting to input port " << yarp.connect("/eventBottlePlayer/etb:o", inputPortName.c_str(), "udp") << std::endl;
 
     imageToWrite.resize(128, 128);
 
