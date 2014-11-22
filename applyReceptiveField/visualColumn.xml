@@ -89,6 +89,33 @@
 </module>
 
 
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort13 --imagePort /image13 --X 16 --Y 112</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort14 --imagePort /image14 --X 48 --Y 112</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort15 --imagePort /image15 --X 80 --Y 112</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
+
+<module>
+   <name>applyReceptiveFields</name>
+   <parameters>--inputPort /inputPort16 --imagePort /image16 --X 112 --Y 112</parameters>
+   <node>localhost</node>
+   <tag>visualColumn</tag>
+</module>
 
 <module>
    <name>yarpview</name>
@@ -156,6 +183,26 @@
 </connection>
 <connection>
   <from>/image12</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image13</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image14</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image15</from>
+  <to>/outputImage</to>
+  <protocol>udp</protocol>
+</connection>
+<connection>
+  <from>/image16</from>
   <to>/outputImage</to>
   <protocol>udp</protocol>
 </connection>

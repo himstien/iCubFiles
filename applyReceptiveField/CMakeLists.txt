@@ -38,3 +38,6 @@ if (folder_source)
 else (folder_source)
   message(FATAL_ERROR "No source code files found. Please add something")
 endif (folder_source)
+
+install(TARGETS ${KEYWORD} DESTINATION bin)
+
