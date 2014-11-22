@@ -10,14 +10,14 @@ neuronLIF::neuronLIF()
 // Init neuron related variables
 	restingPotential = 0;
 	potential = restingPotential;
-	thresholdPotential = 1000;
+	thresholdPotential = 50;
 	lastTimeStamp = 0;
 	lastUpdateTime = 0;
 	timeFromLastSpike = 0;
 	totalSpikes = 0;
 	initTimeStamp = 0;
 //	inputCurrent = 0;
-	membraneTimeConstant = 500;
+	membraneTimeConstant = 1000;
 	
 	setInputCurrent();
 // Init display parameters
@@ -111,18 +111,18 @@ bool neuronLIF::updateNeuron(double curr, unsigned int timeNow)
      if (debug)
           std::cout << "[neuron LIF]: Update neurons with current " << curr << " and time " << lastUpdateTime << " " << timeNow << " " << timeNow - lastUpdateTime<< "  " << std::endl;
      
-     if (curr <= 0)
-     {
-              lastUpdateTime = timeNow;
-              return false;
-     }
-     
      double delT = timeNow - lastUpdateTime;
      if (delT < 0) delT = - delT;
              
      potential = potential*exp(-(delT/membraneTimeConstant) ) + curr;
      lastUpdateTime = timeNow;
      
+     if(potential <= restingPotential)
+     {
+            potential = restingPotential;
+            return false;
+     }  
+
      if(potential > thresholdPotential)
      {
                   potential = restingPotential;
@@ -134,7 +134,7 @@ bool neuronLIF::updateNeuron(double curr, unsigned int timeNow)
      {     
            if(save2file) writeToFile();
            return false;
-     }	
+     }
 }
 
 bool neuronLIF::updateNeuron(double curr, double delT)
@@ -144,15 +144,14 @@ bool neuronLIF::updateNeuron(double curr, double delT)
      
      if (delT < 0) delT = - delT;
 
-     if (curr <= 0)
-     {
-              lastUpdateTime = lastUpdateTime + (unsigned int)delT;
-              return false;
-     }
-     
-     
      potential = potential*exp(-(delT/membraneTimeConstant)) + curr;
      lastUpdateTime = lastUpdateTime + (unsigned int)delT;
+
+     if(potential <= restingPotential)
+     {
+            potential = restingPotential;
+            return false;
+     }  
 
      if(potential > thresholdPotential)
      {
@@ -166,6 +165,7 @@ bool neuronLIF::updateNeuron(double curr, double delT)
            if(save2file) writeToFile();
            return false;
      }
+
 }
 
 
@@ -175,18 +175,18 @@ bool neuronLIF::updateNeuron(double curr)
      if (debug)
           std::cout << "[neuron LIF]: Update neurons with current: " << curr << std::endl;
 
-     if (curr <= 0)
-     {
-              potential = potential*exp(-1/membraneTimeConstant);
-              return false;
-     }
-     
      potential = potential*exp(-1/membraneTimeConstant) + curr;
      lastUpdateTime = time(0);
 
      if (debug)
         std::cout << "[neuron LIF]: Update potential of neuron to " << potential << std::endl; 
      
+     if(potential <= restingPotential)
+     {
+            potential = restingPotential;
+            return false;
+     }  
+
      if(potential > thresholdPotential)
      {
                   potential = restingPotential;
@@ -274,4 +274,9 @@ bool neuronLIF::setNeuronId(std::string value)
      neuronId = value;
      fileName = neuronId + ".dat";
      return true;
+}
+
+void neuronLIF::resetNeuron()
+{
+    restingPotential = 0;
 }

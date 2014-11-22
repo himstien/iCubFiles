@@ -45,12 +45,33 @@ class DumperToRaw
     private:
         std::ifstream inFileFid;
         std::string inFile;
+
+        std::ofstream outFileFid;
+        std::string outFile;
+
         bool verbose;
+        int eventsRead;
+        int error1;
+        bool valid;
+        bool wrap;
+        unsigned int wrapAdd;
+        int wrapCount;
+        
+        yarp::os::Bottle outputBottle;
+        yarp::os::BufferedPort<yarp::os::Bottle> outputPort;
     
+        yarp::os::Network yarp;
+        
+        
     public:
         DumperToRaw();
+
         void setInFile(std::string); 
-        void convertToRaw();
-        void setVerbose();
+        bool setOutputPort(std::string);
+
+        int char2dec(char);
+        void convertToDumper();
+        void setVerbose(bool);
+
     
 };

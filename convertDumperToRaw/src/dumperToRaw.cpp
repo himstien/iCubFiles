@@ -16,6 +16,7 @@
  */
 
 #include "dumperToRaw.h"
+#include "math.h"
 
 using namespace std;
 using namespace yarp::os;
@@ -25,132 +26,274 @@ using namespace emorph::ecodec;
 DumperToRaw::DumperToRaw()
 {
         verbose = false;
+        eventsRead = -1;
+        error1 = 0;
+        valid = false;
+        wrap = true;
+        wrapCount = 0;
+        wrapAdd = 0;
+
+        outFile = "data.log";
+        outFileFid.open(outFile.c_str());            
+                
                
 }
+
+void DumperToRaw::close()
+{
+        cout << "Closing ports and files." << endl;        
+        verbose = false;
+        eventsRead = -1;
+        error1 = 0;
+        valid = false;
+        wrap = true;
+        wrapCount = 0;
+        wrapAdd = 0;
+
+
+        outFileFid.close();
+
+        outputPort.interrupt();        
+        outputPort.close();
+        return;      
+}        
 
 void DumperToRaw::setInFile(string inputFile)
 {
     inFile = inputFile;
 }
 
+bool DumperToRaw::setOutputPort(string outPort)
+{
+    cout << "[dumper2raw]: opening port for writing data." << endl;   
+    if(outputPort.open(outPort.c_str()))
+        return true;
+    
+    return false;
+}
+
 void DumperToRaw::setVerbose(bool value)
 {
     verbose = value;
-    cout << "[dumper to raw]: Set verbose to " << value << endl;
+    cout << "[dumper2raw]: Setting verbose to " << value << endl;
 }
 
-void DumperToRaw::convertToRaw()
+int DumperToRaw::char2dec(char input)
+{
+    unsigned int outDecimal;
+    outDecimal = 0;
+    switch (input)
+    {
+        case '0':
+            outDecimal = 0;
+            return outDecimal;
+
+        case '1':
+            outDecimal = 1;
+            return outDecimal;
+
+        case '2':
+            outDecimal = 2;
+            return outDecimal;
+
+        case '3':
+            outDecimal = 3;
+            return outDecimal;
+
+        case '4':
+            outDecimal = 4;
+            return outDecimal;
+
+        case '5':
+            outDecimal = 5;
+            return outDecimal;
+
+        case '6':
+            outDecimal = 6;
+            return outDecimal;
+
+        case '7':
+            outDecimal = 7;
+            return outDecimal;
+
+        case '8':
+            outDecimal = 8;
+            return outDecimal;
+
+        case '9':
+            outDecimal = 9;
+            return outDecimal;
+
+        case 'a':
+            outDecimal = 10;
+            return outDecimal;
+
+        case 'b':
+            outDecimal = 11;
+            return outDecimal;
+
+        case 'c':
+            outDecimal = 12;
+            return outDecimal;
+
+        case 'd':
+            outDecimal = 13;
+            return outDecimal;
+
+        case 'e':
+            outDecimal = 14;
+            return outDecimal;
+
+        case 'f':
+            outDecimal = 15;
+            return outDecimal;
+
+        case 'A':
+            outDecimal = 10;
+            return outDecimal;
+
+        case 'B':
+            outDecimal = 11;
+            return outDecimal;
+
+        case 'C':
+            outDecimal = 12;
+            return outDecimal;
+
+        case 'D':
+            outDecimal = 13;
+            return outDecimal;
+
+        case 'E':
+            outDecimal = 14;
+            return outDecimal;
+
+        case 'F':
+            outDecimal = 15;
+            return outDecimal;
+
+        default:
+            outDecimal = -1;
+            return outDecimal;
+    }
+}
+
+void DumperToRaw::convertToDumper()
 {   
 
     inFileFid.open(inFile.c_str());
-    cout << inFileFid.is_open() << endl;
+    cout << "[dumper2raw]: Opening file. " <<  inFileFid.is_open() << endl;        
+    inFileFid.seekg(0, inFileFid.beg);    
+    eventsRead = 0;
     
-    string line;
-    
-    int lineCount = 0;
+    while(!inFileFid.eof()) // && eventsRead < 50000
+    {        
 
+        outputBottle.clear();
+        outputBottle = outputPort.prepare();
 
-
-    bool ok = false;
-
-    while (!inFileFid.eof())
-    {
-        
-        // get one bottle worth data from file
-        getline(inFileFid, line);
-
-        int wordCount = 0;
-        // parse line into x y p t    
-        if (verbose)
+        char timeByte;        
+        inFileFid >> timeByte;
+        if (char2dec(timeByte) == 8)
         {
-            char startCheck = line[wordCount++];
-            if (startCheck == '0')
-            {
-                cout << "Line Ok! " << lineCount++ << endl;            
-                ok = true;                
+//            cout << "Valid event. Starting conversion." << endl;
+            
+            inFileFid >> timeByte;                
+            if(char2dec(timeByte)== 8)
+            {   
+                wrapCount++;    
+                cout << "!!! Wrap event number " << wrapCount << " occurred !!!" << endl;
+                cout << endl;
+
+                for(int skp = 0; skp < 6; skp++)
+                {
+                    inFileFid >>timeByte;
+                } // End of skip time for-loop
+                valid = false;
+                wrapAdd += pow(2, 24);                   
+                
+                //break;
             }
-        }    
+            else
+            {
+                valid = true;
+            }
+
+            // compute timeStamp
+            if(valid)
+            {
+                unsigned int time = wrapAdd;
+                unsigned int yPos = 0;
+                unsigned int xPos = 0;
+                unsigned int pol = 0;
+                unsigned int channel = 0;
+
+                for (int place = 5; place >=0; place--)
+                {
+                    inFileFid >> timeByte;
+//                    cout << char2dec(timeByte) << " ";
+                    time += char2dec(timeByte)*pow(16, place);                
+                } // End of timestamp For-loop
+                
+                // Discard first 4 bytes of address data. reserved for other use
+                for (int i = 0; i < 4; i++)
+                {
+                    char wordByte;
+                    inFileFid >> wordByte;
+                } // end of discard For-loop
+
+                // Get address, polarity and channel
+                //for (int i = 0; i < 4; i++)
+                {
+                    char wordByte1, wordByte2, wordByte3, wordByte4;
+
+                    inFileFid >> wordByte1;
+                    inFileFid >> wordByte2;
+                    inFileFid >> wordByte3;
+                    inFileFid >> wordByte4;
+
+//                    cout << char2dec(wordByte1)<< " " << char2dec(wordByte2)<< " " << char2dec(wordByte3)<< " " << char2dec(wordByte4)<< " ";
+
+                    yPos = ((char2dec(wordByte3)<<4) | char2dec(wordByte4) ) >>1;                        
+                    channel = char2dec(wordByte4) & 8;
+                    xPos = (char2dec(wordByte1) & 7) << 4 | char2dec(wordByte2);
+                    pol = char2dec(wordByte1) & 1;
             
-        char space = line[wordCount++];
-            
-        string timeOfBottle;
+                    outputBottle.addInt(xPos);
+                    outputBottle.addInt(yPos);
+                    outputBottle.addInt(pol);
+                    outputBottle.addInt(channel);                   
+                    outputBottle.addInt(time);
 
-        if (ok)
-        {
-             while (line[wordCount] != ' ')
-             {
-                timeOfBottle+=line[wordCount];
-                wordCount++;
-             }
-             ok = false;                
+                    outputPort.write();
+//                cout << " " << time << " " << wrapAdd << " " << xPos << " " << yPos << " " << pol << " " << channel ;
+                } // end of address For-loop
+//                cout << endl;
+                eventsRead++;
+            }
         }
-
-        cout << line.find('X') << endl;
-
-//        cout << timeOfBottle << endl;
-
-    } 
-
-/*
-    for (int b=0; b<size;b++)
-    {
-        Bottle *cur = main->get(b).asList(); //get each sublist  
-        //fprintf(stdout, "Bottle: %s\n", cur->toString().c_str());
-        
-        //create timestamp       
-        TimeStamp ts;
-        ts.setStamp(cur->find("time").asDouble());
-
-        string type = cur->find("type").asString().c_str(); //for each sublist get type  
-        //create Bottle to append Timestamp and Event
-        Bottle tmp;
-        //encode TimeStamp 
-        tmp = ts.encode();
-        if (type=="AE")
+        else
         {
-            //create addressEvent for specific type
-            AddressEvent evt; 
-            //start filling addressEvent with data from sublists
-            evt.setX(cur->find("posX").asInt());
-            evt.setY(cur->find("posY").asInt());
-            evt.setPolarity(cur->find("polarity").asInt());
-            evt.setChannel(cur->find("channel").asInt());
-            //append timeStamp and Event into single bottle
-            tmp.append(evt.encode());
+            if(inFileFid.eof())
+            {
+                break;
+            }
+
+            if(error1 < 1)
+            {
+                cout << "Event invalid. Moving to next event. Will stop if another error occurs." << endl;                
+                error1++;
+            }
+            else
+            {   
+                cout << "Multiple errors while reading the file. Quitting. Total events read: " << eventsRead << endl;
+                return;
+            }
         }
-
-        if (type=="CLE-G")
-        {
-            //create addressEvent for specific type
-            ClusterEventGauss evt; 
-            //start filling addressEvent with data from sublists
-            evt.setChannel(cur->find("channel").asInt());
-            evt.setXCog(cur->find("xCog").asInt());
-            evt.setYCog(cur->find("yCog").asInt());
-            evt.setNumAE(cur->find("numAE").asInt());
-            evt.setXSigma2(cur->find("xSigma2").asInt());
-            evt.setYSigma2(cur->find("ySigma2").asInt());
-            evt.setXYSigma(cur->find("xySigma").asInt());
-            
-            //append timeStamp and Event into single bottle
-            tmp.append(evt.encode());
-        }
-
-
-        //append the bottle tmp with TimeStamp and Event of a single spike to a bottle that contains the events of the whole packet 
-        event.append(tmp);
-    }
-    //create and fill in dataTmp (eventBottle) with data from event (Bottle) 
-    //fprintf(stdout, "\n\n\nEvent: %s\n", event.toString().c_str());
-    eventBottle dataTmp(&event);
-    //copy dataTmp to eventBottle out
-    out = dataTmp;
-    //send it all out
-    outPort.write();
-    mutex.post();
-*/
-
-
+    }// end of file
+    cout << "File reading completed. Total events read = " << eventsRead << endl;
+    return;
 }
+
 
 //empty line to make gcc happy
