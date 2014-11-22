@@ -1,5 +1,5 @@
 
-#include<string>
+#include <string>
 #include <fstream>
 
 class neuronLIF

@@ -31,6 +31,8 @@ class neuronLIF
              bool setNeuronId(std::string);
              std::string getNeuronId(){return neuronId;};
 
+             void resetNeuron();
+
              double getCenterX();
              double getCenterY();
              
