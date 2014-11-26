@@ -15,7 +15,7 @@
 using namespace std;
 using namespace yarp::os;
 
-#define THRESHOLD 10.0
+#define THRESHOLD 0.0
 
 int main(int argc, char *argv[])
 {
@@ -286,6 +286,7 @@ numNeurons = neurons.size();
                         int pol = cur->find("polarity").asInt();
                         int channel = cur->find("channel").asInt();
             
+                        cout << "   X: " << posX << " Y: " << posY << " Polarity: " << pol << endl;                
 
                         Bottle &outB = network.outputNeuronStatePort.prepare();
                         outB.clear();
@@ -298,7 +299,7 @@ numNeurons = neurons.size();
                             cout << "[main]: Updating neuron with ID: " << neuron->getNeuronId() << endl;
                         }
                        
-                        if ((posX < neuron->getCenterX()+16) && (posX > neuron->getCenterX()-16) && (posY < neuron->getCenterY()+16) && (posY > neuron->getCenterY()-16) && channel == 1)
+                        if ((posX < neuron->getCenterX()+16) && (posX > neuron->getCenterX()-16) && (posY < neuron->getCenterY()+16) && (posY > neuron->getCenterY()-16))
                         {                            
 
                             double toUpdateX = posX - (neuron->getCenterX() - 16);
@@ -317,7 +318,7 @@ numNeurons = neurons.size();
                             potentials.at(rfUpdate) = neuron->getPotential();                            
 
                             //************  Debugging                            
-                            /*
+                            // /*
                             cout << "   Current now: " << currentToUpdate << " TotalCurrent: " << sumCurrent << " Potential: " << potentials.at(rfUpdate) << endl;
                             cout << "   X: " << posX << " Y: " << posY << " Polarity: " << pol << endl;                
                             yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(posX, posY);
@@ -335,7 +336,7 @@ numNeurons = neurons.size();
                         indexMax = rfUpdate;
                         maxPotential = potentials.at(rfUpdate);                        
                     }
-                cout << " RfIndex: " << rfUpdate << " maxPotential: " << potentials.at(rfUpdate) << " index selected: " << indexMax << endl;
+//                cout << " RfIndex: " << rfUpdate << " maxPotential: " << potentials.at(rfUpdate) << " index selected: " << indexMax << endl;
 
 //                    neuron->resetNeuron();
 
