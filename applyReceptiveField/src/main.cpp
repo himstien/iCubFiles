@@ -15,7 +15,7 @@
 using namespace std;
 using namespace yarp::os;
 
-#define THRESHOLD 0.0
+#define THRESHOLD 25.0
 
 int main(int argc, char *argv[])
 {
@@ -62,89 +62,89 @@ string weightsFile;
 //    receptiveFields.resize(24);
  
 receptiveField rf1;
-weightsFile = "./curvedRFs/cRF1.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/curvedRFs/cRF1.txt" ;
 rf1.setWeightsFile(weightsFile.c_str());
 rf1.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf1);
 
 receptiveField rf2;
-weightsFile = "./curvedRFs/cRF2.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF2.txt" ;
 rf2.setWeightsFile(weightsFile.c_str());
 rf2.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-//receptiveFields.push_back(&rf2);
+receptiveFields.push_back(&rf2);
 
 
 receptiveField rf3;
-weightsFile = "./curvedRFs/cRF3.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF3.txt" ;
 rf3.setWeightsFile(weightsFile.c_str());
 rf3.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf3);
 
 receptiveField rf4;
-weightsFile = "./curvedRFs/cRF4.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF4.txt" ;
 rf4.setWeightsFile(weightsFile.c_str());
 rf4.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-//receptiveFields.push_back(&rf4);
+receptiveFields.push_back(&rf4);
 
 receptiveField rf5;
-weightsFile = "./curvedRFs/cRF5.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF5.txt" ;
 rf5.setWeightsFile(weightsFile.c_str());
 rf5.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf5);
 
 receptiveField rf6;
-weightsFile = "./curvedRFs/cRF6.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF6.txt" ;
 rf6.setWeightsFile(weightsFile.c_str());
 rf6.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-//receptiveFields.push_back(&rf6);
+receptiveFields.push_back(&rf6);
 
 receptiveField rf7;
-weightsFile = "./curvedRFs/cRF7.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF7.txt" ;
 rf7.setWeightsFile(weightsFile.c_str());
 rf7.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf7);
 
 receptiveField rf8;
-weightsFile = "./curvedRFs/cRF8.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF8.txt" ;
 rf8.setWeightsFile(weightsFile.c_str());
 rf8.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-//receptiveFields.push_back(&rf8);
+receptiveFields.push_back(&rf8);
 
 receptiveField rf9;
-weightsFile = "./curvedRFs/cRF9.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF9.txt" ;
 rf9.setWeightsFile(weightsFile.c_str());
 rf9.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf9);
 
 receptiveField rf10;
-weightsFile = "./curvedRFs/cRF10.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF10.txt" ;
 rf10.setWeightsFile(weightsFile.c_str());
 rf10.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-//receptiveFields.push_back(&rf10);
+receptiveFields.push_back(&rf10);
 
 receptiveField rf11;
-weightsFile = "./curvedRFs/cRF11.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF11.txt" ;
 rf11.setWeightsFile(weightsFile.c_str());
 rf11.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
 receptiveFields.push_back(&rf11);
 
 receptiveField rf12;
-weightsFile = "./curvedRFs/cRF12.txt" ;
+weightsFile = "/home/icub/Himanshu_local/iCubFiles/applyReceptiveField/build/./curvedRFs/cRF12.txt" ;
 rf12.setWeightsFile(weightsFile.c_str());
 rf12.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-//receptiveFields.push_back(&rf12);
+receptiveFields.push_back(&rf12);
 
 
 
@@ -163,7 +163,7 @@ neuron2.setNeuronId("neuron2");
 neuron2.setDebug(false);
 neuron2.save2File(false);
 neuron2.setNeuronCenter(X, Y);
-//neurons.push_back(&neuron2); 
+neurons.push_back(&neuron2); 
 
 neuronLIF neuron3;
 neuron3.setNeuronId("neuron3");
@@ -177,7 +177,7 @@ neuron4.setNeuronId("neuron4");
 neuron4.setDebug(false);
 neuron4.save2File(false);
 neuron4.setNeuronCenter(X, Y);
-//neurons.push_back(&neuron4); 
+neurons.push_back(&neuron4); 
 
 neuronLIF neuron5;
 neuron5.setNeuronId("neuron5");
@@ -191,7 +191,7 @@ neuron6.setNeuronId("neuron6");
 neuron6.setDebug(false);
 neuron6.save2File(false);
 neuron6.setNeuronCenter(X, Y);
-//neurons.push_back(&neuron6); 
+neurons.push_back(&neuron6); 
 
 neuronLIF neuron7;
 neuron7.setNeuronId("neuron7");
@@ -205,7 +205,7 @@ neuron8.setNeuronId("neuron8");
 neuron8.setDebug(false);
 neuron8.save2File(false);
 neuron8.setNeuronCenter(X, Y);
-//neurons.push_back(&neuron8); 
+neurons.push_back(&neuron8); 
 
 neuronLIF neuron9;
 neuron9.setNeuronId("neuron9");
@@ -219,7 +219,7 @@ neuron10.setNeuronId("neuron10");
 neuron10.setDebug(false);
 neuron10.save2File(false);
 neuron10.setNeuronCenter(X, Y);
-//neurons.push_back(&neuron10); 
+neurons.push_back(&neuron10); 
 
 neuronLIF neuron11;
 neuron11.setNeuronId("neuron11");
@@ -233,7 +233,7 @@ neuron12.setNeuronId("neuron12");
 neuron12.setDebug(false);
 neuron12.save2File(false);
 neuron12.setNeuronCenter(X, Y);
-//neurons.push_back(&neuron12); 
+neurons.push_back(&neuron12); 
 
 
 numNeurons = neurons.size();
@@ -286,7 +286,6 @@ numNeurons = neurons.size();
                         int pol = cur->find("polarity").asInt();
                         int channel = cur->find("channel").asInt();
             
-                        cout << "   X: " << posX << " Y: " << posY << " Polarity: " << pol << endl;                
 
                         Bottle &outB = network.outputNeuronStatePort.prepare();
                         outB.clear();
@@ -299,7 +298,7 @@ numNeurons = neurons.size();
                             cout << "[main]: Updating neuron with ID: " << neuron->getNeuronId() << endl;
                         }
                        
-                        if ((posX < neuron->getCenterX()+16) && (posX > neuron->getCenterX()-16) && (posY < neuron->getCenterY()+16) && (posY > neuron->getCenterY()-16))
+                        if ((posX < neuron->getCenterX()+16) && (posX > neuron->getCenterX()-16) && (posY < neuron->getCenterY()+16) && (posY > neuron->getCenterY()-16) && channel == 0)
                         {                            
 
                             double toUpdateX = posX - (neuron->getCenterX() - 16);
@@ -318,7 +317,7 @@ numNeurons = neurons.size();
                             potentials.at(rfUpdate) = neuron->getPotential();                            
 
                             //************  Debugging                            
-                            // /*
+                             /*
                             cout << "   Current now: " << currentToUpdate << " TotalCurrent: " << sumCurrent << " Potential: " << potentials.at(rfUpdate) << endl;
                             cout << "   X: " << posX << " Y: " << posY << " Polarity: " << pol << endl;                
                             yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(posX, posY);
@@ -336,12 +335,12 @@ numNeurons = neurons.size();
                         indexMax = rfUpdate;
                         maxPotential = potentials.at(rfUpdate);                        
                     }
-//                cout << " RfIndex: " << rfUpdate << " maxPotential: " << potentials.at(rfUpdate) << " index selected: " << indexMax << endl;
+                 cout << " RfIndex: " << rfUpdate << " maxPotential: " << potentials.at(rfUpdate) << " index selected: " << indexMax << endl;
 
 //                    neuron->resetNeuron();
 
 // Add small dot at center of receptive field
-// /*
+/*
                     for (int x = -2; x < 2; x++)
                     {
                         for (int y = -2; y < 2; y++) 
@@ -381,7 +380,7 @@ numNeurons = neurons.size();
 // */
                     network.imagePort.write(network.imageToWrite);
                     indexMax = -1;
-                    maxPotential = THRESHOLD;
+                    maxPotential = maxPotential*2.5;
                     // Reset all neurons if one reaches threshold
                        for (int rfUpdate = 0; rfUpdate < numNeurons; rfUpdate++)
                         {
@@ -394,7 +393,7 @@ numNeurons = neurons.size();
                 {
 // Clear image at receptive field
 
-       //         /*
+//                /*
                     for (int x = 0; x < 32; x++)
                     {
                         for (int y = 0; y < 32; y++) 
@@ -408,6 +407,7 @@ numNeurons = neurons.size();
                     }
                     network.imagePort.write(network.imageToWrite);
                     // */
+                    //maxPotential = maxPotential*0.95;
 
                 }              
 
