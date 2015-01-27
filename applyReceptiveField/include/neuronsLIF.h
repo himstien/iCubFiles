@@ -29,12 +29,17 @@ class neuronLIF
              void setDebug(bool);
              
              bool setNeuronId(std::string);
-             std::string getNeuronId(){return neuronId;};
+             std::string getNeuronId()
+             {
+                 return neuronId;
+             };
 
              void resetNeuron();
 
              double getCenterX();
              double getCenterY();
+
+             unsigned int getNumSpikes();
              
       private:
               // Init neuron related variables

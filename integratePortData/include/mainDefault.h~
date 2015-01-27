@@ -1,0 +1,14 @@
+#include "neuronsLIF.h"
+#include <vector>
+
+class mainDefault{
+
+    public: 
+//            std::vector<neuronLIF*> neurons;
+            neuronLIF neurons[];
+            int numNeurons;
+            mainDefault();
+            virtual ~mainDefault();           
+
+};
+

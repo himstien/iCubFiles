@@ -10,7 +10,7 @@ neuronLIF::neuronLIF()
 // Init neuron related variables
 	restingPotential = 0;
 	potential = restingPotential;
-	thresholdPotential = 50;
+    thresholdPotential = 10;
 	lastTimeStamp = 0;
 	lastUpdateTime = 0;
 	timeFromLastSpike = 0;
@@ -96,6 +96,7 @@ bool neuronLIF::updateNeuron()
      {
                   potential = restingPotential;
                   lastTimeStamp = lastUpdateTime;
+                  totalSpikes++;
                   if(save2file) writeToFile();
                   return true;
      }
@@ -127,6 +128,7 @@ bool neuronLIF::updateNeuron(double curr, unsigned int timeNow)
      {
                   potential = restingPotential;
                   lastTimeStamp = lastUpdateTime;
+                  totalSpikes++;
                   if(save2file) writeToFile();
                   return true;
      }
@@ -157,6 +159,7 @@ bool neuronLIF::updateNeuron(double curr, double delT)
      {
                   potential = restingPotential;
                   lastTimeStamp = lastUpdateTime;
+                  totalSpikes++;
                   if(save2file) writeToFile();
                   return true;
      }
@@ -175,7 +178,8 @@ bool neuronLIF::updateNeuron(double curr)
      if (debug)
           std::cout << "[neuron LIF]: Update neurons with current: " << curr << std::endl;
 
-     potential = potential*exp(-1/membraneTimeConstant) + curr;
+     //potential = potential*exp(-1/membraneTimeConstant) + curr;
+     potential = potential*0.96 + curr;
      lastUpdateTime = time(0);
 
      if (debug)
@@ -191,6 +195,7 @@ bool neuronLIF::updateNeuron(double curr)
      {
                   potential = restingPotential;
                   lastTimeStamp = lastUpdateTime;
+                  totalSpikes++;
                   if(save2file) writeToFile();
                   return true;
      }
@@ -216,6 +221,11 @@ double neuronLIF::getCenterX()
 double neuronLIF::getCenterY()
 {
         return centerY;
+}
+
+unsigned int neuronLIF::getNumSpikes()
+{
+        return totalSpikes;
 }
 
 void neuronLIF::save2File(bool value)
@@ -278,5 +288,8 @@ bool neuronLIF::setNeuronId(std::string value)
 
 void neuronLIF::resetNeuron()
 {
-    restingPotential = 0;
+//    restingPotential = 0;
+//    potential = 0;
+    totalSpikes = 0;
+
 }

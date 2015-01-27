@@ -1,6 +1,6 @@
 #include "yarpDefault.h"
 
-using namespace emorph::ecodec;
+using namespace emorph;
 using namespace yarp::os;
 using namespace yarp::sig;
 
@@ -11,7 +11,7 @@ yarpDefault::yarpDefault()
 
     inputPort.open("/inputEvents");   
 
-    std::cout << "Connecting to input port " << yarp.connect("/eventBottleConverter/etb:o", "/inputEvents") << std::endl;
+    std::cout << "Connecting to input port " << yarp.connect("/vDownSampleFour/vBottle:o", "/inputEvents", "tcp") << std::endl;
     
     
     imageToWrite.resize(128, 128);
@@ -32,13 +32,13 @@ yarpDefault::yarpDefault()
 
 }
 
-yarpDefault::yarpDefault(std::string inputPortName, std::string imagePortName, std::string outputNeuronState)
+yarpDefault::yarpDefault(std::string inputPortName, std::string imagePortName, std::string outputNeuronState, std::string sourcePortName)
 {
     Network yarp;
 
     inputPort.open(inputPortName.c_str());   
 
-    std::cout << "Connecting to input port " << yarp.connect("/eventBottleConverter/etb:o", inputPortName.c_str(), "udp") << std::endl;
+    std::cout << "Connecting to input port " << yarp.connect(sourcePortName, inputPortName.c_str(), "udp") << std::endl;
 
     imageToWrite.resize(128, 128);
 

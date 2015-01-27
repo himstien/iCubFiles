@@ -8,17 +8,18 @@
 
 #include <string>
 
-#include <iCub/emorph/eventBottle.h>
-#include <iCub/emorph/eventCodec.h>
+//#include <iCub/emorph/eventBottle.h>
+#include <iCub/emorph/all.h>
+
 
 class yarpDefault
 {
     public:
         yarpDefault();
-        yarpDefault(std::string, std::string, std::string);
+        yarpDefault(std::string, std::string, std::string, std::string);
         ~yarpDefault();
   
-        yarp::os::BufferedPort<yarp::os::Bottle> inputPort;    
+        yarp::os::BufferedPort<emorph::vBottle> inputPort;
         yarp::sig::ImageOf<yarp::sig::PixelRgb> imageToWrite;
         
         yarp::os::Bottle output;
