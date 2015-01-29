@@ -16,7 +16,7 @@ using namespace std;
 using namespace yarp::os;
 using namespace emorph;
 
-#define THRESHOLD 15.0
+#define THRESHOLD 5.0
 
 int main(int argc, char *argv[])
 {
@@ -72,14 +72,14 @@ int main(int argc, char *argv[])
     //    receptiveFields.resize(24);
  
     receptiveField rf1;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF1.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF1.txt" ;
     rf1.setWeightsFile(weightsFile.c_str());
     rf1.setWeights();
 //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf1);
 
     receptiveField rf2;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF2.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF2.txt" ;
     rf2.setWeightsFile(weightsFile.c_str());
     rf2.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
@@ -87,154 +87,154 @@ int main(int argc, char *argv[])
 
 
     receptiveField rf3;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF16.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF16.txt" ;
     rf3.setWeightsFile(weightsFile.c_str());
     rf3.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf3);
 
     receptiveField rf4;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF4.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF4.txt" ;
     rf4.setWeightsFile(weightsFile.c_str());
     rf4.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf4);
 
     receptiveField rf5;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF7.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF7.txt" ;
     rf5.setWeightsFile(weightsFile.c_str());
     rf5.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf5);
 
     receptiveField rf6;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF8.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF8.txt" ;
     rf6.setWeightsFile(weightsFile.c_str());
     rf6.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf6);
 
     receptiveField rf7;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF7.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF7.txt" ;
     rf7.setWeightsFile(weightsFile.c_str());
     rf7.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf7);
 
     receptiveField rf8;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF8.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF8.txt" ;
     rf8.setWeightsFile(weightsFile.c_str());
     rf8.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf8);
 
     receptiveField rf9;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF9.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF9.txt" ;
     rf9.setWeightsFile(weightsFile.c_str());
     rf9.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf9);
 
     receptiveField rf10;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF10.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF10.txt" ;
     rf10.setWeightsFile(weightsFile.c_str());
     rf10.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf10);
 
     receptiveField rf11;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF11.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF11.txt" ;
     rf11.setWeightsFile(weightsFile.c_str());
     rf11.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     receptiveFields.push_back(&rf11);
 
     receptiveField rf12;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF12.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF12.txt" ;
     rf12.setWeightsFile(weightsFile.c_str());
     rf12.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf12);
 
     receptiveField rf13;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF13.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF13.txt" ;
     rf13.setWeightsFile(weightsFile.c_str());
     rf13.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf13);
 
     receptiveField rf14;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF14.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF14.txt" ;
     rf14.setWeightsFile(weightsFile.c_str());
     rf14.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf14);
 
     receptiveField rf15;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF15.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF15.txt" ;
     rf15.setWeightsFile(weightsFile.c_str());
     rf15.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf15);
 
     receptiveField rf16;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF16.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF16.txt" ;
     rf16.setWeightsFile(weightsFile.c_str());
     rf16.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf16);
 
     receptiveField rf17;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF17.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF17.txt" ;
     rf17.setWeightsFile(weightsFile.c_str());
     rf17.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf17);
 
     receptiveField rf18;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF18.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF18.txt" ;
     rf18.setWeightsFile(weightsFile.c_str());
     rf18.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf18);
 
     receptiveField rf19;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF19.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF19.txt" ;
     rf19.setWeightsFile(weightsFile.c_str());
     rf19.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf19);
 
     receptiveField rf20;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF20.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF20.txt" ;
     rf20.setWeightsFile(weightsFile.c_str());
     rf20.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf20);
 
     receptiveField rf21;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF21.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF21.txt" ;
     rf21.setWeightsFile(weightsFile.c_str());
     rf21.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf19);
 
     receptiveField rf22;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF22.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF22.txt" ;
     rf22.setWeightsFile(weightsFile.c_str());
     rf22.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf22);
 
     receptiveField rf23;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF23.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF23.txt" ;
     rf23.setWeightsFile(weightsFile.c_str());
     rf23.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
     //receptiveFields.push_back(&rf23);
 
     receptiveField rf24;
-    weightsFile = "/home/icub/Himanshu/iCubFiles/applyReceptiveField/./curvedRFs/cRF24.txt" ;
+    weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF24.txt" ;
     rf24.setWeightsFile(weightsFile.c_str());
     rf24.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
@@ -504,10 +504,10 @@ int main(int argc, char *argv[])
                     // /*
                     //                            cout << "   Current now: " << currentToUpdate << " TotalCurrent: " << sumCurrent << " Potential: " << potentials.at(rfUpdate) << endl;
                     //                            cout << "   X: " << posX << " Y: " << posY << " Polarity: " << pol << " Weights: " << rField0->getWeightAt(toUpdateX, toUpdateY) + rField1->getWeightAt(toUpdateX, toUpdateY) << endl;
-                    yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(posX, posY);
-                    pixel.r = 0;
-                    pixel.g = 100+100*rField1->getWeightAt(toUpdateX, toUpdateY)*(pol*2-1);
-                    pixel.b = 100+100*rField0->getWeightAt(toUpdateX, toUpdateY)*(pol*2-1);
+                   // yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(posX, posY);
+                   // pixel.r = 0;
+                   // pixel.g = 100+100*rField1->getWeightAt(toUpdateX, toUpdateY)*(pol*2-1);
+                   // pixel.b = 100+100*rField0->getWeightAt(toUpdateX, toUpdateY)*(pol*2-1);
 
                     // */
 
@@ -559,21 +559,21 @@ int main(int argc, char *argv[])
 
             // Add receptive field to image
 
-            /*
-             *                     for (int x = 0; x < 32; x++)
-             *                     {
-             *                         for (int y = 0; y < 32; y++)
-             *                         {
-             *                             yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
-             *                                       //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
-             *
-             *                                 pixel.r = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-             *                                 pixel.g = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-             *                                 pixel.b = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
-             *
-             *                         }
-             *                     }
-             * // */
+       //     /*
+                                  for (int x = 0; x < 32; x++)
+                                  {
+                                      for (int y = 0; y < 32; y++)
+                                      {
+                                          yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
+                                                    //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
+
+                                              pixel.r = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                              pixel.g = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+                                              pixel.b = 127+100*(rfToShow->getWeightAt(x,y)); //abs(int(50.0*neuron->getPotential()*rf1.getWeightAt(x, y)));
+
+                                      }
+                                  }
+              // */
             network.imagePort.write(network.imageToWrite);
             indexMax = -1;
             maxPotential = THRESHOLD;
@@ -588,22 +588,22 @@ int main(int argc, char *argv[])
         {
             // Clear image at receptive field
 
-            /*
-             *                     for (int x = 0; x < 32; x++)
-             *                     {
-             *                         for (int y = 0; y < 32; y++)
-             *                         {
-             *                             yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
-             *                                       //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
-             *                             pixel.r = 0;
-             *                             pixel.g = 0;
-             *                             pixel.b = 0;
-             *                         }
-             *                     }
-             *                     network.imagePort.write(network.imageToWrite);
-             *
-             *
-             *              // */
+          //  /*
+                                  for (int x = 0; x < 32; x++)
+                                  {
+                                      for (int y = 0; y < 32; y++)
+                                      {
+                                          yarp::sig::PixelRgb& pixel = network.imageToWrite.pixel(X-16+x, Y-16+y);
+                                                    //network.imageToWrite.pixel(64-x+16, 64-y+16) = 127+neuron1.getPotential()*rf1.getWeightAt(x, y);
+                                          pixel.r = 0;
+                                          pixel.g = 0;
+                                          pixel.b = 0;
+                                      }
+                                  }
+                                  network.imagePort.write(network.imageToWrite);
+
+
+                           // */
             //                    maxPotential = maxPotential*0.95;
 
             for (int rfUpdate = 0; rfUpdate < numNeurons; rfUpdate++)
