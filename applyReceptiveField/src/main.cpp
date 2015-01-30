@@ -154,91 +154,91 @@ int main(int argc, char *argv[])
     rf12.setWeightsFile(weightsFile.c_str());
     rf12.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf12);
+    receptiveFields.push_back(&rf12);
 
     receptiveField rf13;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF13.txt" ;
     rf13.setWeightsFile(weightsFile.c_str());
     rf13.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf13);
+    receptiveFields.push_back(&rf13);
 
     receptiveField rf14;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF14.txt" ;
     rf14.setWeightsFile(weightsFile.c_str());
     rf14.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf14);
+    receptiveFields.push_back(&rf14);
 
     receptiveField rf15;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF15.txt" ;
     rf15.setWeightsFile(weightsFile.c_str());
     rf15.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf15);
+    receptiveFields.push_back(&rf15);
 
     receptiveField rf16;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF16.txt" ;
     rf16.setWeightsFile(weightsFile.c_str());
     rf16.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf16);
+    receptiveFields.push_back(&rf16);
 
     receptiveField rf17;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF17.txt" ;
     rf17.setWeightsFile(weightsFile.c_str());
     rf17.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf17);
+    receptiveFields.push_back(&rf17);
 
     receptiveField rf18;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF18.txt" ;
     rf18.setWeightsFile(weightsFile.c_str());
     rf18.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf18);
+    receptiveFields.push_back(&rf18);
 
     receptiveField rf19;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF19.txt" ;
     rf19.setWeightsFile(weightsFile.c_str());
     rf19.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf19);
+    receptiveFields.push_back(&rf19);
 
     receptiveField rf20;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF20.txt" ;
     rf20.setWeightsFile(weightsFile.c_str());
     rf20.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf20);
+    receptiveFields.push_back(&rf20);
 
     receptiveField rf21;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF21.txt" ;
     rf21.setWeightsFile(weightsFile.c_str());
     rf21.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf19);
+    receptiveFields.push_back(&rf19);
 
     receptiveField rf22;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF22.txt" ;
     rf22.setWeightsFile(weightsFile.c_str());
     rf22.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf22);
+    receptiveFields.push_back(&rf22);
 
     receptiveField rf23;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF23.txt" ;
     rf23.setWeightsFile(weightsFile.c_str());
     rf23.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf23);
+    receptiveFields.push_back(&rf23);
 
     receptiveField rf24;
     weightsFile = "/home/icub/robot/iCubFiles/applyReceptiveField/./curvedRFs/cRF24.txt" ;
     rf24.setWeightsFile(weightsFile.c_str());
     rf24.setWeights();
     //        cout << "Receptive Field " << r << " is valid? " <<  rf1.isValid() << endl;
-    //receptiveFields.push_back(&rf24);
+    receptiveFields.push_back(&rf24);
 
     vector<neuronLIF*> neurons;
 
@@ -289,70 +289,70 @@ int main(int argc, char *argv[])
     neuron7.setDebug(false);
     neuron7.save2File(false);
     neuron7.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron7);
+    neurons.push_back(&neuron7);
 
     neuronLIF neuron8;
     neuron8.setNeuronId("neuron8");
     neuron8.setDebug(false);
     neuron8.save2File(false);
     neuron8.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron8);
+    neurons.push_back(&neuron8);
 
     neuronLIF neuron9;
     neuron9.setNeuronId("neuron9");
     neuron9.setDebug(false);
     neuron9.save2File(false);
     neuron9.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron9);
+    neurons.push_back(&neuron9);
 
     neuronLIF neuron10;
     neuron10.setNeuronId("neuron10");
     neuron10.setDebug(false);
     neuron10.save2File(false);
     neuron10.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron10);
+    neurons.push_back(&neuron10);
 
     neuronLIF neuron11;
     neuron11.setNeuronId("neuron11");
     neuron11.setDebug(false);
     neuron11.save2File(false);
     neuron11.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron11);
+    neurons.push_back(&neuron11);
 
     neuronLIF neuron12;
     neuron12.setNeuronId("neuron12");
     neuron12.setDebug(false);
     neuron12.save2File(false);
     neuron12.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron12);
+    neurons.push_back(&neuron12);
 
     neuronLIF neuron13;
     neuron13.setNeuronId("neuron13");
     neuron13.setDebug(false);
     neuron13.save2File(false);
     neuron13.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron13);
+    neurons.push_back(&neuron13);
 
     neuronLIF neuron14;
     neuron14.setNeuronId("neuron14");
     neuron14.setDebug(false);
     neuron14.save2File(false);
     neuron14.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron14);
+    neurons.push_back(&neuron14);
 
     neuronLIF neuron15;
     neuron15.setNeuronId("neuron15");
     neuron15.setDebug(false);
     neuron15.save2File(false);
     neuron15.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron15);
+    neurons.push_back(&neuron15);
 
     neuronLIF neuron16;
     neuron16.setNeuronId("neuron16");
     neuron16.setDebug(false);
     neuron16.save2File(false);
     neuron16.setNeuronCenter(X, Y);
-    //neurons.push_back(&neuron16);
+    neurons.push_back(&neuron16);
 
 
 
